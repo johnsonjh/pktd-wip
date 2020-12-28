@@ -280,7 +280,7 @@ outputs are used to fund a channel. See
 ## Opening a channel by using a PSBT
 
 This is a step-by-step guide on how to open a channel with `lnd` by using a PSBT
-as the funding transaction.  
+as the funding transaction.
 We will use `bitcoind` to create and sign the transaction just to keep the
 example simple. Of course any other PSBT compatible wallet could be used and the
 process would likely be spread out over multiple signing steps. The goal of this
