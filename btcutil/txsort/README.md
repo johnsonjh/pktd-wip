@@ -2,7 +2,8 @@
 
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](http://Copyfree.org)
 
-Package txsort provides the transaction sorting according to [BIP 69](https://github.com/bitcoin/bips/blob/master/bip-0069.mediawiki).
+Package txsort provides the transaction sorting according to
+[BIP 69](https://github.com/bitcoin/bips/blob/master/bip-0069.mediawiki).
 
 BIP 69 defines a standard lexicographical sort order of transaction inputs and
 outputs. This is useful to standardize transactions for faster multi-party

@@ -1,7 +1,6 @@
 # Makefile
 
-To build, verify, and install `lnd` from source, use the following
-commands:
+To build, verify, and install `lnd` from source, use the following commands:
 
 ```
 make
@@ -15,8 +14,8 @@ fail.
 
 # Developers
 
-This document specifies all commands available from `lnd`'s `Makefile`.
-The commands included handle:
+This document specifies all commands available from `lnd`'s `Makefile`. The
+commands included handle:
 
 - Installation of all go-related dependencies.
 - Compilation and installation of `lnd` and `lncli`.
@@ -56,19 +55,17 @@ Compiles, tests, and installs `lnd` and `lncli`. Equivalent to
 ## `btcd`
 
 Ensures that the [`github.com/btcsuite/btcd`][btcd] repository is checked out
-locally. Lastly, installs the version of
-[`github.com/btcsuite/btcd`][btcd] specified in `Gopkg.toml`
+locally. Lastly, installs the version of [`github.com/btcsuite/btcd`][btcd]
+specified in `Gopkg.toml`
 
 ## `build`
 
-Compiles the current source and vendor trees, creating `./lnd` and
-`./lncli`.
+Compiles the current source and vendor trees, creating `./lnd` and `./lncli`.
 
 ## `check`
 
-Installs the version of [`github.com/btcsuite/btcd`][btcd] specified
-in `Gopkg.toml`, then runs the unit tests followed by the integration
-tests.
+Installs the version of [`github.com/btcsuite/btcd`][btcd] specified in
+`Gopkg.toml`, then runs the unit tests followed by the integration tests.
 
 Related: [`unit`](#unit) [`itest`](#itest)
 
@@ -120,7 +117,8 @@ integration test suite.
 
 Arguments:
 
-- `icase=<itestcase>` (the snake_case version of the testcase name field in the testCases slice (i.e. sweep_coins), not the test func name)
+- `icase=<itestcase>` (the snake_case version of the testcase name field in the
+  testCases slice (i.e. sweep_coins), not the test func name)
 - `timeout=<timeout>`
 
 ## `itest-parallel`
@@ -153,8 +151,8 @@ $ make flakehunter-parallel icase='(data_loss_protection|channel_backup)' backen
 
 ## `lint`
 
-Ensures that [`gopkg.in/alecthomas/gometalinter.v1`][gometalinter] is
-installed, then lints the project.
+Ensures that [`gopkg.in/alecthomas/gometalinter.v1`][gometalinter] is installed,
+then lints the project.
 
 ## `list`
 
@@ -167,8 +165,7 @@ Compiles the `lnrpc` proto files.
 ## `scratch`
 
 Compiles all dependencies and builds the `./lnd` and `./lncli` binaries.
-Equivalent to [`lint`](#lint) [`btcd`](#btcd)
-[`unit-race`](#unit-race).
+Equivalent to [`lint`](#lint) [`btcd`](#btcd) [`unit-race`](#unit-race).
 
 ## `unit`
 
@@ -180,7 +177,8 @@ Arguments:
 - `case=<testcase>`
 - `timeout=<timeout>`
 - `log="stdlog[ <log-level>]"` prints logs to stdout
-  - `<log-level>` can be `info` (default), `debug`, `trace`, `warn`, `error`, `critical`, or `off`
+  - `<log-level>` can be `info` (default), `debug`, `trace`, `warn`, `error`,
+    `critical`, or `off`
 
 ## `unit-cover`
 
@@ -193,7 +191,8 @@ Arguments:
 - `case=<testcase>`
 - `timeout=<timeout>`
 - `log="stdlog[ <log-level>]"` prints logs to stdout
-  - `<log-level>` can be `info` (default), `debug`, `trace`, `warn`, `error`, `critical`, or `off`
+  - `<log-level>` can be `info` (default), `debug`, `trace`, `warn`, `error`,
+    `critical`, or `off`
 
 Related: [`unit`](#unit)
 
@@ -207,7 +206,8 @@ Arguments:
 - `case=<testcase>`
 - `timeout=<timeout>`
 - `log="stdlog[ <log-level>]"` prints logs to stdout
-  - `<log-level>` can be `info` (default), `debug`, `trace`, `warn`, `error`, `critical`, or `off`
+  - `<log-level>` can be `info` (default), `debug`, `trace`, `warn`, `error`,
+    `critical`, or `off`
 
 Related: [`unit`](#unit)
 

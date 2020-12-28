@@ -2,15 +2,15 @@
 
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](http://Copyfree.org)
 
-rpcclient implements a Websocket-enabled JSON-RPC client package written
-in [Go](http://golang.org/). It provides a robust and easy-to-use client for
+rpcclient implements a Websocket-enabled JSON-RPC client package written in
+[Go](http://golang.org/). It provides a robust and easy-to-use client for
 interfacing with an RPC server that uses the btcd/bitcoin/pktd-compatible
 JSON-RPC API.
 
 ## Status
 
-This package is currently under active development. It is already stable and
-the infrastructure is complete. However, there are still several RPCs left to
+This package is currently under active development. It is already stable and the
+infrastructure is complete. However, there are still several RPCs left to
 implement and the API is not stable yet.
 
 ## Major Features

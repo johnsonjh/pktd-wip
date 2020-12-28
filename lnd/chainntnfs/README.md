@@ -7,8 +7,7 @@ receive notifications in response to specific on-chain events. The set of
 notifications available include:
 
 - Notifications for each new block connected to the current best chain.
-  - Notifications once a `txid` has reached a specified number of
-    confirmations.
+  - Notifications once a `txid` has reached a specified number of confirmations.
   - Notifications once a target outpoint (`txid:index`) has been spent.
 
 These notifications are used within `lnd` in order to properly handle the

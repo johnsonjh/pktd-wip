@@ -28,7 +28,6 @@
     "                              ┌──────────┐               |                      │       ",
     "                              │ roasbeef │◀──────────────┴──────────────────────┘       ",
     "                              └──────────┘                         100k satoshis        ",
-
     " the graph also includes a channel from roasbeef to sophon via pham nuwen"
   ],
   "nodes": [

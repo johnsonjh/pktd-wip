@@ -17,10 +17,10 @@ given a set of Coins that may be spent by the user, for example as below:
 var unspentCoins = []coinset.Coin{ ... }
 ```
 
-When the user needs to spend a certain amount, they will need to select a
-subset of these coins which contain at least that value. CoinSelector is
-an interface that represents types that implement coin selection algos,
-subject to various criteria. There are a few examples of CoinSelector's:
+When the user needs to spend a certain amount, they will need to select a subset
+of these coins which contain at least that value. CoinSelector is an interface
+that represents types that implement coin selection algos, subject to various
+criteria. There are a few examples of CoinSelector's:
 
 - MinIndexCoinSelector
 

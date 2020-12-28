@@ -7,8 +7,8 @@ with `lnd` in Ruby.
 
 `lnd` uses the `gRPC` protocol for communication with clients like `lncli`.
 
-`gRPC` is based on protocol buffers and as such, you will need to compile
-the `lnd` proto file in Ruby before you can use it to communicate with `lnd`.
+`gRPC` is based on protocol buffers and as such, you will need to compile the
+`lnd` proto file in Ruby before you can use it to communicate with `lnd`.
 
 ## Setup
 
@@ -116,7 +116,8 @@ You should now see the details of the settled invoice appear.
 
 #### Using Macaroons
 
-To authenticate using macaroons you need to include the macaroon in the metadata of the request.
+To authenticate using macaroons you need to include the macaroon in the metadata
+of the request.
 
 ```ruby
 # Lnd admin macaroon is at ~/.lnd/data/chain/bitcoin/simnet/admin.macaroon on Linux and
@@ -125,13 +126,16 @@ macaroon_binary = File.read(File.expand_path("~/.lnd/data/chain/bitcoin/simnet/a
 macaroon = macaroon_binary.each_byte.map { |b| b.to_s(16).rjust(2,'0') }.join
 ```
 
-The simplest approach to use the macaroon is to include the metadata in each request as shown below.
+The simplest approach to use the macaroon is to include the metadata in each
+request as shown below.
 
 ```ruby
 stub.get_info(Lnrpc::GetInfoRequest.new, metadata: {macaroon: macaroon})
 ```
 
-However, this can get tiresome to do for each request. We can use gRPC interceptors to add this metadata to each request automatically. Our interceptor class would look like this.
+However, this can get tiresome to do for each request. We can use gRPC
+interceptors to add this metadata to each request automatically. Our interceptor
+class would look like this.
 
 ```ruby
 class MacaroonInterceptor < GRPC::ClientInterceptor
@@ -174,7 +178,10 @@ p stub.get_info(Lnrpc::GetInfoRequest.new)
 
 #### Receive Large Responses
 
-A GRPC::ResourceExhausted exception is raised when a server response is too large. In particular, this will happen with mainnet DescribeGraph calls. The solution is to raise the default limits by including a channel_args hash when creating our stub.
+A GRPC::ResourceExhausted exception is raised when a server response is too
+large. In particular, this will happen with mainnet DescribeGraph calls. The
+solution is to raise the default limits by including a channel_args hash when
+creating our stub.
 
 ```ruby
 stub = Lnrpc::Lightning::Stub.new(

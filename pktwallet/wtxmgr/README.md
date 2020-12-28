@@ -12,8 +12,8 @@ their relevant input and outputs.
 - Automatic spend tracking for transaction inserts and removals
 - Double spend detection and correction after blockchain reorgs
 - Scalable design:
-  - Utilizes similar prefixes to allow cursor iteration over relevant transaction
-    inputs and outputs
+  - Utilizes similar prefixes to allow cursor iteration over relevant
+    transaction inputs and outputs
   - Programmatically detectable errors, including encapsulation of errors from
     packages it relies on
   - Operates under its own walletdb namespace

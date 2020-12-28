@@ -11,8 +11,8 @@ encoding scheme uses the
 scheme along with a checksum to encode a serialized payment request.
 
 The payment request serialized by the package consist of: the destination's
-public key, the payment hash to use for the payment, and the value of payment
-to send.
+public key, the payment hash to use for the payment, and the value of payment to
+send.
 
 ## Installation and Updating
 

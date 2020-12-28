@@ -1259,7 +1259,7 @@
             "type": "string",
             "format": "byte"
           },
-          "description": "An optional field that can be used to pass an arbitrary set of TLV records\nto a peer which understands the new records. This can be used to pass\napplication specific data during the payment attempt. Record types are\nrequired to be in the custom range \u003e= 65536. When using REST, the values\nmust be encoded as base64."
+          "description": "An optional field that can be used to pass an arbitrary set of TLV records\nto a peer which understands the new records. This can be used to pass\napplication specific data during the payment attempt. Record types are\nrequired to be in the custom range >= 65536. When using REST, the values\nmust be encoded as base64."
         },
         "allow_self_payment": {
           "type": "boolean",

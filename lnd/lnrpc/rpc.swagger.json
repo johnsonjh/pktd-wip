@@ -968,7 +968,7 @@
     "/v1/graph/routes/{pub_key}/{amt}": {
       "get": {
         "summary": "lncli: `queryroutes`\nQueryRoutes attempts to query the daemon's Channel Router for a possible\nroute to a target destination capable of carrying a specific amount of\nsatoshis. The returned route contains the full details required to craft and\nsend an HTLC, also including the necessary information that should be\npresent within the Sphinx packet encapsulated within the HTLC.",
-        "description": "When using REST, the `dest_custom_records` map type can be set by appending\n`\u0026dest_custom_records[\u003crecord_number\u003e]=\u003crecord_data_base64_url_encoded\u003e`\nto the URL. Unfortunately this map type doesn't appear in the REST API\ndocumentation because of a bug in the grpc-gateway library.",
+        "description": "When using REST, the `dest_custom_records` map type can be set by appending\n`&dest_custom_records[<record_number>]=<record_data_base64_url_encoded>`\nto the URL. Unfortunately this map type doesn't appear in the REST API\ndocumentation because of a bug in the grpc-gateway library.",
         "operationId": "QueryRoutes",
         "responses": {
           "200": {
@@ -1279,7 +1279,7 @@
     },
     "/v1/invoices/subscribe": {
       "get": {
-        "summary": "SubscribeInvoices returns a uni-directional stream (server -\u003e client) for\nnotifying the client of newly added/settled invoices. The caller can\noptionally specify the add_index and/or the settle_index. If the add_index\nis specified, then we'll first start by sending add invoice events for all\ninvoices with an add_index greater than the specified value. If the\nsettle_index is specified, the next, we'll send out all settle events for\ninvoices with a settle_index greater than the specified value. One or both\nof these fields can be set. If no fields are set, then we'll only send out\nthe latest add/settle events.",
+        "summary": "SubscribeInvoices returns a uni-directional stream (server -> client) for\nnotifying the client of newly added/settled invoices. The caller can\noptionally specify the add_index and/or the settle_index. If the add_index\nis specified, then we'll first start by sending add invoice events for all\ninvoices with an add_index greater than the specified value. If the\nsettle_index is specified, the next, we'll send out all settle events for\ninvoices with a settle_index greater than the specified value. One or both\nof these fields can be set. If no fields are set, then we'll only send out\nthe latest add/settle events.",
         "operationId": "SubscribeInvoices",
         "responses": {
           "200": {
@@ -1855,7 +1855,7 @@
     "/v1/transactions/fee": {
       "get": {
         "summary": "lncli: `estimatefee`\nEstimateFee asks the chain backend to estimate the fee rate and total fees\nfor a transaction that pays to multiple specified outputs.",
-        "description": "When using REST, the `AddrToAmount` map type can be set by appending\n`\u0026AddrToAmount[\u003caddress\u003e]=\u003camount_to_send\u003e` to the URL. Unfortunately this\nmap type doesn't appear in the REST API documentation because of a bug in\nthe grpc-gateway library.",
+        "description": "When using REST, the `AddrToAmount` map type can be set by appending\n`&AddrToAmount[<address>]=<amount_to_send>` to the URL. Unfortunately this\nmap type doesn't appear in the REST API documentation because of a bug in\nthe grpc-gateway library.",
         "operationId": "EstimateFee",
         "responses": {
           "200": {
@@ -3112,7 +3112,7 @@
       "properties": {
         "addr": {
           "$ref": "#/definitions/lnrpcLightningAddress",
-          "title": "Lightning address of the peer, in the format `\u003cpubkey\u003e@host`"
+          "title": "Lightning address of the peer, in the format `<pubkey>@host`"
         },
         "perm": {
           "type": "boolean",
@@ -5245,7 +5245,7 @@
             "type": "string",
             "format": "byte"
           },
-          "description": "An optional field that can be used to pass an arbitrary set of TLV records\nto a peer which understands the new records. This can be used to pass\napplication specific data during the payment attempt. Record types are\nrequired to be in the custom range \u003e= 65536. When using REST, the values\nmust be encoded as base64."
+          "description": "An optional field that can be used to pass an arbitrary set of TLV records\nto a peer which understands the new records. This can be used to pass\napplication specific data during the payment attempt. Record types are\nrequired to be in the custom range >= 65536. When using REST, the values\nmust be encoded as base64."
         },
         "allow_self_payment": {
           "type": "boolean",
@@ -5475,7 +5475,7 @@
         "confirmed_balance": {
           "type": "string",
           "format": "int64",
-          "title": "The confirmed balance of a wallet(with \u003e= 1 confirmations)"
+          "title": "The confirmed balance of a wallet(with >= 1 confirmations)"
         },
         "unconfirmed_balance": {
           "type": "string",

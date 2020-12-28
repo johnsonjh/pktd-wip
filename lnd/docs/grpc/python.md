@@ -80,8 +80,8 @@ extra steps (after completing all 6 step described above) to get the
 
 ### Imports and Client
 
-Every time you use Python gRPC, you will have to import the generated rpc modules
-and set up a channel and stub to your connect to your `lnd` node:
+Every time you use Python gRPC, you will have to import the generated rpc
+modules and set up a channel and stub to your connect to your `lnd` node:
 
 ```python
 import rpc_pb2 as ln
@@ -173,7 +173,8 @@ This example will send a payment of 100 satoshis every 2 seconds.
 
 ### Using Macaroons
 
-To authenticate using macaroons you need to include the macaroon in the metadata of the request.
+To authenticate using macaroons you need to include the macaroon in the metadata
+of the request.
 
 ```python
 import codecs
@@ -185,13 +186,16 @@ with open(os.path.expanduser('~/.lnd/data/chain/bitcoin/simnet/admin.macaroon'),
     macaroon = codecs.encode(macaroon_bytes, 'hex')
 ```
 
-The simplest approach to use the macaroon is to include the metadata in each request as shown below.
+The simplest approach to use the macaroon is to include the metadata in each
+request as shown below.
 
 ```python
 stub.GetInfo(ln.GetInfoRequest(), metadata=[('macaroon', macaroon)])
 ```
 
-However, this can get tiresome to do for each request, so to avoid explicitly including the macaroon we can update the credentials to include it automatically.
+However, this can get tiresome to do for each request, so to avoid explicitly
+including the macaroon we can update the credentials to include it
+automatically.
 
 ```python
 def metadata_callback(context, callback):
@@ -221,11 +225,11 @@ stub.GetInfo(ln.GetInfoRequest())
 
 With the above, you should have all the `lnd` related `gRPC` dependencies
 installed locally into your virtual environment. In order to get up to speed
-with `protofbuf` usage from Python, see [this official `protobuf` tutorial for
-Python](https://developers.google.com/protocol-buffers/docs/pythontutorial).
-Additionally, [this official gRPC
-resource](http://www.grpc.io/docs/tutorials/basic/python.html) provides more
-details around how to drive `gRPC` from Python.
+with `protofbuf` usage from Python, see
+[this official `protobuf` tutorial for Python](https://developers.google.com/protocol-buffers/docs/pythontutorial).
+Additionally,
+[this official gRPC resource](http://www.grpc.io/docs/tutorials/basic/python.html)
+provides more details around how to drive `gRPC` from Python.
 
 ## API documentation
 

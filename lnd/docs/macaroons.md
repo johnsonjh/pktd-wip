@@ -1,11 +1,11 @@
-As part of [the `lnd` 0.3-alpha
-release](https://github.com/lightningnetwork/lnd/releases/tag/v0.3-alpha), we
-have addressed [issue 20](https://github.com/lightningnetwork/lnd/issues/20),
+As part of
+[the `lnd` 0.3-alpha release](https://github.com/lightningnetwork/lnd/releases/tag/v0.3-alpha),
+we have addressed [issue 20](https://github.com/lightningnetwork/lnd/issues/20),
 which is RPC authentication. Until this was implemented, all RPC calls to `lnd`
 were unauthenticated. To fix this, we've utilized
 [macaroons](https://research.google.com/pubs/pub41892.html), which are similar
-to cookies but more capable. This brief overview explains, at a basic level,
-how they work, how we use them for `lnd` authentication, and our future plans.
+to cookies but more capable. This brief overview explains, at a basic level, how
+they work, how we use them for `lnd` authentication, and our future plans.
 
 ## What are macaroons?
 
@@ -15,9 +15,9 @@ request to that website. If you're logged into a website, that cookie can store
 a session ID, which the site can look up in its own database to check who you
 are and give you the appropriate content.
 
-A macaroon is similar: it's a small bit of data that a client (like `lncli`)
-can send to a service (like `lnd`) to assert that it's allowed to perform an
-action. The service looks up the macaroon ID and verifies that the macaroon was
+A macaroon is similar: it's a small bit of data that a client (like `lncli`) can
+send to a service (like `lnd`) to assert that it's allowed to perform an action.
+The service looks up the macaroon ID and verifies that the macaroon was
 initially signed with the service's root key. However, unlike a cookie, you can
 _delegate_ a macaroon, or create a version of it that has more limited
 capabilities, and then send it to someone else to use.
@@ -27,9 +27,9 @@ TLS-encrypted connection), which is why we've also begun enforcing TLS for RPC
 requests in this release. Before SSL was enforced on websites such as Facebook
 and Google, listening to HTTP sessions on wireless networks was one way to
 hijack the session and log in as that user, gaining access to the user's
-account. Macaroons are similar in that intercepting a macaroon in transit
-allows the interceptor to use the macaroon to gain all the privileges of the
-legitimate user.
+account. Macaroons are similar in that intercepting a macaroon in transit allows
+the interceptor to use the macaroon to gain all the privileges of the legitimate
+user.
 
 ## Macaroon delegation
 
@@ -37,8 +37,8 @@ A macaroon is delegated by adding restrictions (called caveats) and an
 authentication code similar to a signature (technically an HMAC) to it. The
 technical method of doing this is outside the scope of this overview
 documentation, but the [README in the macaroons package](../macaroons/README.md)
-or the macaroon paper linked above describe it in more detail. The
-user must remember several things:
+or the macaroon paper linked above describe it in more detail. The user must
+remember several things:
 
 - Sharing a macaroon allows anyone in possession of that macaroon to use it to
   access the service (in our case, `lnd`) to do anything permitted by the
@@ -46,26 +46,26 @@ user must remember several things:
   caveat," that requires an external service to verify the request; however,
   `lnd` doesn't currently implement those.
 
-- If you add a caveat to a macaroon and share the resulting macaroon, the
-  person receiving it cannot remove the caveat.
+- If you add a caveat to a macaroon and share the resulting macaroon, the person
+  receiving it cannot remove the caveat.
 
 This is used in `lnd` in an interesting way. By default, when `lnd` starts, it
 creates three files which contain macaroons: a file called `admin.macaroon`,
 which contains a macaroon with no caveats, a file called `readonly.macaroon`,
 which is the _same_ macaroon but with an additional caveat, that permits only
-methods that don't change the state of `lnd`, and `invoice.macaroon`, which
-only has access to invoice related methods.
+methods that don't change the state of `lnd`, and `invoice.macaroon`, which only
+has access to invoice related methods.
 
 ## How macaroons are used by `lnd` and `lncli`.
 
-On startup, `lnd` checks to see if the `admin.macaroon`, `readonly.macaroon`
-and `invoice.macaroon` files exist. If they don't exist, `lnd` updates its
-database with a new macaroon ID, generates the three files `admin.macaroon`,
+On startup, `lnd` checks to see if the `admin.macaroon`, `readonly.macaroon` and
+`invoice.macaroon` files exist. If they don't exist, `lnd` updates its database
+with a new macaroon ID, generates the three files `admin.macaroon`,
 `readonly.macaroon` and `invoice.macaroon`, all with the same ID. The
-`readonly.macaroon` file has an additional caveat which restricts the caller
-to using only read-only methods and the `invoice.macaroon` also has an
-additional caveat which restricts the caller to using only invoice related
-methods. This means a few important things:
+`readonly.macaroon` file has an additional caveat which restricts the caller to
+using only read-only methods and the `invoice.macaroon` also has an additional
+caveat which restricts the caller to using only invoice related methods. This
+means a few important things:
 
 - You can delete the `admin.macaroon` and be left with only the
   `readonly.macaroon`, which can sometimes be useful (for example, if you want
@@ -74,12 +74,14 @@ methods. This means a few important things:
 
 - If you delete the data directory which contains the `macaroons.db` file, this
   invalidates the `admin.macaroon`, `readonly.macaroon` and `invoice.macaroon`
-  files. Invalid macaroon files give you errors like `cannot get macaroon: root key with id 0 doesn't exist` or `verification failed: signature mismatch after caveat verification`.
+  files. Invalid macaroon files give you errors like
+  `cannot get macaroon: root key with id 0 doesn't exist` or
+  `verification failed: signature mismatch after caveat verification`.
 
 You can also run `lnd` with the `--no-macaroons` option, which skips the
 creation of the macaroon files and all macaroon checks within the RPC server.
-This means you can still pass a macaroon to the RPC server with a client, but
-it won't be checked for validity. Note that disabling authentication of a server
+This means you can still pass a macaroon to the RPC server with a client, but it
+won't be checked for validity. Note that disabling authentication of a server
 that's listening on a public interface is not allowed. This means the
 `--no-macaroons` option is only permitted when the RPC server is in a private
 network. In CIDR notation, the following IPs are considered private,
@@ -90,9 +92,9 @@ network. In CIDR notation, the following IPs are considered private,
 - [`fc00::/7`](https://tools.ietf.org/html/rfc4193).
 
 Since `lnd` requires macaroons by default in order to call RPC methods, `lncli`
-now reads a macaroon and provides it in the RPC call. Unless the path is
-changed by the `--macaroonpath` option, `lncli` tries to read the macaroon from
-the network directory of `lnd`'s currently active network (e.g. for simnet
+now reads a macaroon and provides it in the RPC call. Unless the path is changed
+by the `--macaroonpath` option, `lncli` tries to read the macaroon from the
+network directory of `lnd`'s currently active network (e.g. for simnet
 `lnddir/data/chain/bitcoin/simnet/admin.macaroon`) by default and will error if
 that file doesn't exist unless provided the `--no-macaroons` option. Keep this
 in mind when running `lnd` with `--no-macaroons`, as `lncli` will error out
@@ -112,11 +114,11 @@ apart.
 
 As mentioned above, by default `lnd` creates several macaroon files in its
 directory. These are unencrypted and in case of the `admin.macaroon` provide
-full access to the daemon. This can be seen as quite a big security risk if
-the `lnd` daemon runs in an environment that is not fully trusted.
+full access to the daemon. This can be seen as quite a big security risk if the
+`lnd` daemon runs in an environment that is not fully trusted.
 
-The macaroon files are the only files with highly sensitive information that
-are not encrypted (unlike the wallet file and the macaroon database file that
+The macaroon files are the only files with highly sensitive information that are
+not encrypted (unlike the wallet file and the macaroon database file that
 contains the [root key](../macaroons/README.md), these are always encrypted,
 even if no password is used).
 
@@ -124,12 +126,12 @@ To avoid leaking the macaroon information, `lnd` supports the so called
 `stateless initialization` mode:
 
 - The three startup commands `create`, `unlock` and `changepassword` of `lncli`
-  all have a flag called `--stateless_init` that instructs the daemon **not**
-  to create `*.macaroon` files.
+  all have a flag called `--stateless_init` that instructs the daemon **not** to
+  create `*.macaroon` files.
 - The two operations `create` and `changepassword` that actually create/update
-  the macaroon database will return the admin macaroon in the RPC call.
-  Assuming the daemon and the `lncli` are not used on the same machine, this
-  will leave no unencrypted information on the machine where `lnd` runs on.
+  the macaroon database will return the admin macaroon in the RPC call. Assuming
+  the daemon and the `lncli` are not used on the same machine, this will leave
+  no unencrypted information on the machine where `lnd` runs on.
   - To be more precise: By default, when using the `changepassword` command, the
     macaroon root key in the macaroon DB is just re-encrypted with the new
     password. But the key remains the same and therefore the macaroons issued
@@ -140,8 +142,8 @@ To avoid leaking the macaroon information, `lnd` supports the so called
   or saved to a file if the parameter `--save_to=some_file.macaroon` is used.
 - **Important:** By default, `lnd` will create the macaroon files during the
   `unlock` phase, if the `--stateless_init` flag is not used. So to avoid
-  leakage of the macaroon information, use the stateless initialization flag
-  for all three startup commands of the wallet unlocker service!
+  leakage of the macaroon information, use the stateless initialization flag for
+  all three startup commands of the wallet unlocker service!
 
 Examples:
 
@@ -167,7 +169,8 @@ A very simple example using `curl` may look something like this:
 
     curl --insecure --header "Grpc-Metadata-macaroon: $(xxd -ps -u -c 1000  $HOME/.lnd/data/chain/bitcoin/simnet/admin.macaroon)" https://localhost:8080/v1/getinfo
 
-Have a look at the [Java GRPC example](/docs/grpc/java.md) for programmatic usage details.
+Have a look at the [Java GRPC example](/docs/grpc/java.md) for programmatic
+usage details.
 
 ## Creating macaroons with custom permissions
 
@@ -177,8 +180,8 @@ The macaroon bakery is described in more detail in the
 ## Future improvements to the `lnd` macaroon implementation
 
 The existing macaroon implementation in `lnd` and `lncli` lays the groundwork
-for future improvements in functionality and security. We will add features
-such as:
+for future improvements in functionality and security. We will add features such
+as:
 
 - Improved replay protection for securing RPC calls
 

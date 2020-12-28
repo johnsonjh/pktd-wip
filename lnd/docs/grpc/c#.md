@@ -1,6 +1,7 @@
 # How to write a C# gRPC client for the Lightning Network Daemon
 
-This section enumerates what you need to do to write a client that communicates with `lnd` in C#.
+This section enumerates what you need to do to write a client that communicates
+with `lnd` in C#.
 
 ## Prerequisites
 
@@ -11,11 +12,15 @@ This section enumerates what you need to do to write a client that communicates 
 
 `lnd` uses the `gRPC` protocol for communication with clients like `lncli`.
 
-.NET natively supports gRPC proto files and generates the necessary C# classes. You can see the official Microsoft gRPC documentation [here](https://docs.microsoft.com/en-gb/aspnet/core/grpc/?view=aspnetcore-3.1)
+.NET natively supports gRPC proto files and generates the necessary C# classes.
+You can see the official Microsoft gRPC documentation
+[here](https://docs.microsoft.com/en-gb/aspnet/core/grpc/?view=aspnetcore-3.1)
 
-This assumes you are using a Windows machine, but it applies equally to Mac and Linux.
+This assumes you are using a Windows machine, but it applies equally to Mac and
+Linux.
 
-Create a new `.net core` console application called `lndclient` at your root directory (On Windows : `C:/`).
+Create a new `.net core` console application called `lndclient` at your root
+directory (On Windows : `C:/`).
 
 Create a folder `Grpc` in the root of your project and fetch the lnd proto files
 
@@ -24,7 +29,8 @@ mkdir Grpc
 curl -o Grpc/rpc.proto -s https://raw.githubusercontent.com/lightningnetwork/lnd/master/lnrpc/rpc.proto
 ```
 
-Install `Grpc.Tools`, `Google.Protobuf`, `Grpc.Core` using NuGet or manually with `dotnet add`:
+Install `Grpc.Tools`, `Google.Protobuf`, `Grpc.Core` using NuGet or manually
+with `dotnet add`:
 
 ```bash
 dotnet add package Grpc.Tools
@@ -32,7 +38,9 @@ dotnet add package Google.Protobuf
 dotnet add package Grpc.Core
 ```
 
-Add the `rpc.proto` file to the `.csproj` file in an ItemGroup. (In Visual Studio you can do this by unloading the project, editing the `.csproj` file and then reloading it)
+Add the `rpc.proto` file to the `.csproj` file in an ItemGroup. (In Visual
+Studio you can do this by unloading the project, editing the `.csproj` file and
+then reloading it)
 
 ```xml
 <ItemGroup>
@@ -72,7 +80,9 @@ var client = new Lnrpc.Lightning.LightningClient(channel);
 
 ### Examples
 
-Let's walk through some examples of C# `gRPC` clients. These examples assume that you have at least two `lnd` nodes running, the RPC location of one of which is at the default `localhost:10009`, with an open channel between the two nodes.
+Let's walk through some examples of C# `gRPC` clients. These examples assume
+that you have at least two `lnd` nodes running, the RPC location of one of which
+is at the default `localhost:10009`, with an open channel between the two nodes.
 
 #### Simple RPC
 
@@ -97,7 +107,8 @@ using (var call = client.SubscribeInvoices(request))
 }
 ```
 
-Now, create an invoice for your node at `localhost:10009` and send a payment to it from another node.
+Now, create an invoice for your node at `localhost:10009` and send a payment to
+it from another node.
 
 ```bash
 $ lncli addinvoice --amt=100
@@ -153,7 +164,8 @@ This example will send a payment of 100 satoshis every 2 seconds.
 
 ### Using Macaroons
 
-To authenticate using macaroons you need to include the macaroon in the metadata of the request.
+To authenticate using macaroons you need to include the macaroon in the metadata
+of the request.
 
 ```c#
 // Lnd admin macaroon is at <LND_DIR>/data/chain/bitcoin/simnet/admin.macaroon on Windows
@@ -162,13 +174,16 @@ byte[] macaroonBytes = File.ReadAllBytes("<LND_DIR>/data/chain/bitcoin/simnet/ad
 var macaroon = BitConverter.ToString(macaroonBytes).Replace("-", ""); // hex format stripped of "-" chars
 ```
 
-The simplest approach to use the macaroon is to include the metadata in each request as shown below.
+The simplest approach to use the macaroon is to include the metadata in each
+request as shown below.
 
 ```c#
 client.GetInfo(new GetInfoRequest(), new Metadata() { new Metadata.Entry("macaroon", macaroon) });
 ```
 
-However, this can get tiresome to do for each request, so to avoid explicitly including the macaroon we can update the credentials to include it automatically.
+However, this can get tiresome to do for each request, so to avoid explicitly
+including the macaroon we can update the credentials to include it
+automatically.
 
 ```c#
 // build ssl credentials using the cert the same as before
@@ -194,4 +209,10 @@ client.GetInfo(new GetInfoRequest());
 
 ### Conclusion
 
-With the above, you should have all the `lnd` related `gRPC` dependencies installed locally in your project. In order to get up to speed with `protobuf` usage from C#, see [this official `protobuf` tutorial for C#](https://developers.google.com/protocol-buffers/docs/csharptutorial). Additionally, [this official gRPC resource](http://www.grpc.io/docs/tutorials/basic/csharp.html) provides more details around how to drive `gRPC` from C#.
+With the above, you should have all the `lnd` related `gRPC` dependencies
+installed locally in your project. In order to get up to speed with `protobuf`
+usage from C#, see
+[this official `protobuf` tutorial for C#](https://developers.google.com/protocol-buffers/docs/csharptutorial).
+Additionally,
+[this official gRPC resource](http://www.grpc.io/docs/tutorials/basic/csharp.html)
+provides more details around how to drive `gRPC` from C#.

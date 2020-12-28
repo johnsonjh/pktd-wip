@@ -12,17 +12,17 @@ package for any projects needing a full featured bitcoin peer base to build on.
 
 This package builds upon the wire package, which provides the fundamental
 primitives necessary to speak the bitcoin wire protocol, in order to simplify
-the process of creating fully functional peers. In essence, it provides a
-common base for creating concurrent safe fully validating nodes, Simplified
-Payment Verification (SPV) nodes, proxies, etc.
+the process of creating fully functional peers. In essence, it provides a common
+base for creating concurrent safe fully validating nodes, Simplified Payment
+Verification (SPV) nodes, proxies, etc.
 
 A quick overview of the major features peer provides are as follows:
 
 - Provides a basic concurrent safe bitcoin peer for handling bitcoin
   communications via the peer-to-peer protocol
 - Full duplex reading and writing of bitcoin protocol messages
-- Automatic handling of the initial handshake process including protocol
-  version negotiation
+- Automatic handling of the initial handshake process including protocol version
+  negotiation
 - Asynchronous message queueing of outbound messages with optional channel for
   notification when the message is actually sent
 - Flexible peer configuration
@@ -44,8 +44,7 @@ A quick overview of the major features peer provides are as follows:
   - Does not invoke the related callbacks for older protocol versions
 - Snapshottable peer statistics such as the total number of bytes read and
   written, the remote address, user agent, and negotiated protocol version
-- Helper functions pushing addresses, getblocks, getheaders, and reject
-  messages
+- Helper functions pushing addresses, getblocks, getheaders, and reject messages
   - These could all be sent manually via the standard message output function,
     but the helpers provide additional nice functionality such as duplicate
     filtering and address randomization

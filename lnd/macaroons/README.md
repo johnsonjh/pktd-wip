@@ -9,8 +9,8 @@ For a more high-level overview see
 ## Root key
 
 At startup, if the option `--no-macaroons` is **not** used, a Bolt DB key/value
-store named `data/macaroons.db` is created with a bucket named `macrootkeys`.
-In this DB the following two key/value pairs are stored:
+store named `data/macaroons.db` is created with a bucket named `macrootkeys`. In
+this DB the following two key/value pairs are stored:
 
 - Key `0`: the encrypted root key (32 bytes).
   - If the root key does not exist yet, 32 bytes of pseudo-random data is
@@ -26,8 +26,8 @@ In this DB the following two key/value pairs are stored:
   - The root key is symmetrically encrypted with the derived secret key, using
     the `secretbox` method of the library
     [btcsuite/golangcrypto](https://github.com/btcsuite/golangcrypto).
-  - If the option `--noseedbackup` is used, then the default passphrase
-    `hello` is used to encrypt the root key.
+  - If the option `--noseedbackup` is used, then the default passphrase `hello`
+    is used to encrypt the root key.
 
 ## Generated macaroons
 
@@ -40,15 +40,15 @@ With the root key set up, `lnd` continues with creating three macaroon files:
   invoice which is currently only granted in the admin macaroon.
 - `readonly.macaroon`: Grants read-only access to all gRPC commands. Could be
   given to a monitoring application for example.
-- `admin.macaroon`: Grants full read and write access to all gRPC commands.
-  This is used by the `lncli` client.
+- `admin.macaroon`: Grants full read and write access to all gRPC commands. This
+  is used by the `lncli` client.
 
 These three macaroons all have the location field set to `lnd` and have no
 conditions/first party caveats or third party caveats set.
 
 The access restrictions are implemented with a list of entity/action pairs that
-is mapped to the gRPC functions by the `rpcserver.go`.
-For example, the permissions for the `invoice.macaroon` looks like this:
+is mapped to the gRPC functions by the `rpcserver.go`. For example, the
+permissions for the `invoice.macaroon` looks like this:
 
 ```go
 	// invoicePermissions is a slice of all the entities that allows a user
@@ -81,19 +81,18 @@ restrict the macaroon it uses to communicate with the gRPC interface. These can
 be found in `constraints.go`:
 
 - `TimeoutConstraint`: Set a timeout in seconds after which the macaroon is no
-  longer valid.
-  This constraint can be set by adding the parameter `--macaroontimeout xy` to
-  the `lncli` command.
-- `IPLockConstraint`: Locks the macaroon to a specific IP address.
-  This constraint can be set by adding the parameter `--macaroonip a.b.c.d` to
-  the `lncli` command.
+  longer valid. This constraint can be set by adding the parameter
+  `--macaroontimeout xy` to the `lncli` command.
+- `IPLockConstraint`: Locks the macaroon to a specific IP address. This
+  constraint can be set by adding the parameter `--macaroonip a.b.c.d` to the
+  `lncli` command.
 
 ## Bakery
 
 As of lnd `v0.9.0-beta` there is a macaroon bakery available through gRPC and
-command line.
-Users can create their own macaroons with custom permissions if the provided
-default macaroons (`admin`, `invoice` and `readonly`) are not sufficient.
+command line. Users can create their own macaroons with custom permissions if
+the provided default macaroons (`admin`, `invoice` and `readonly`) are not
+sufficient.
 
 For example, a macaroon that is only allowed to manage peers with a default root
 key `0` would be created with the following command:
@@ -106,19 +105,19 @@ be achieved by passing `uri:<methodURI>` pairs to `bakemacaroon`, for example:
 
 `lncli bakemacaroon uri:/lnrpc.Lightning/GetInfo uri:/verrpc.Versioner/GetVersion`
 
-The macaroon created by this call would only be allowed to call the `GetInfo` and
-`GetVersion` methods instead of all methods that have similar permissions (like
-`info:read` for example).
+The macaroon created by this call would only be allowed to call the `GetInfo`
+and `GetVersion` methods instead of all methods that have similar permissions
+(like `info:read` for example).
 
 A full list of available entity/action pairs and RPC method URIs can be queried
 by using the `lncli listpermissions` command.
 
 ### Upgrading from v0.8.0-beta or earlier
 
-Users upgrading from a version prior to `v0.9.0-beta` might get a `permission denied ` error when trying to use the `lncli bakemacaroon` command.
+Users upgrading from a version prior to `v0.9.0-beta` might get a
+`permission denied` error when trying to use the `lncli bakemacaroon` command.
 This is because the bakery requires a new permission (`macaroon/generate`) to
-access.
-Users can obtain a new `admin.macaroon` that contains this permission by
+access. Users can obtain a new `admin.macaroon` that contains this permission by
 removing all three default macaroons (`admin.macaroon`, `invoice.macaroon` and
 `readonly.macaroon`, **NOT** the `macaroons.db`!) from their
 `data/chain/<chain>/<network>/` directory inside the lnd data directory and
@@ -127,8 +126,8 @@ restarting lnd.
 ## Root key rotation
 
 To manage the root keys used by macaroons, there are `listmacaroonids` and
-`deletemacaroonid` available through gPRC and command line.
-Users can view a list of all macaroon root key IDs that are in use using:
+`deletemacaroonid` available through gPRC and command line. Users can view a
+list of all macaroon root key IDs that are in use using:
 
 `lncli listmacaroonids`
 
