@@ -212,7 +212,5 @@ Arguments:
 Related: [`unit`](#unit)
 
 [btcd]: https://github.com/btcsuite/btcd 'github.com/btcsuite/btcd"'
-[gometalinter]:
-  https://gopkg.in/alecthomas/gometalinter.v1
-  "gopkg.in/alecthomas/gometalinter.v1"
+[gometalinter]: https://gopkg.in/alecthomas/gometalinter.v1 "gopkg.in/alecthomas/gometalinter.v1"
 [goveralls]: https://github.com/mattn/goveralls "github.com/mattn/goveralls"
