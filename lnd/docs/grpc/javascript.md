@@ -18,8 +18,8 @@ npm install grpc @grpc/proto-loader --save
 You also need to copy the `lnd` `rpc.proto` file in your project directory (or
 at least somewhere reachable by your Javascript code).
 
-The `rpc.proto` file is [located in the `lnrpc` directory of the `lnd`
-sources](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/rpc.proto).
+The `rpc.proto` file is
+[located in the `lnrpc` directory of the `lnd` sources](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/rpc.proto).
 
 ### Imports and Client
 
@@ -244,14 +244,15 @@ client.getInfo({}, (err, response) => {
 
 With the above, you should have all the `lnd` related `gRPC` dependencies
 installed locally in your project. In order to get up to speed with `protofbuf`
-usage from Javascript, see [this official `protobuf` reference for
-Javascript](https://developers.google.com/protocol-buffers/docs/reference/javascript-generated).
-Additionally, [this official gRPC
-resource](http://www.grpc.io/docs/tutorials/basic/node.html) provides more
-details around how to drive `gRPC` from `node.js`.
+usage from Javascript, see
+[this official `protobuf` reference for Javascript](https://developers.google.com/protocol-buffers/docs/reference/javascript-generated).
+Additionally,
+[this official gRPC resource](http://www.grpc.io/docs/tutorials/basic/node.html)
+provides more details around how to drive `gRPC` from `node.js`.
 
 ## API documentation
 
-There is an [online API documentation](https://api.lightning.community?javascript)
-available that shows all currently existing RPC methods, including code snippets
-on how to use them.
+There is an
+[online API documentation](https://api.lightning.community?javascript) available
+that shows all currently existing RPC methods, including code snippets on how to
+use them.

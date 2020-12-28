@@ -22,8 +22,8 @@ amounts to be in satoshis instead of fractions of a bitcoin.
 
 ### Simple example: fund PSBT that sends to address
 
-Let's start with a very simple example and assume we want to send half a coin
-to the address `bcrt1qjrdns4f5zwkv29ln86plqzs092yd5fg6nsz8re`:
+Let's start with a very simple example and assume we want to send half a coin to
+the address `bcrt1qjrdns4f5zwkv29ln86plqzs092yd5fg6nsz8re`:
 
 ```shell script
 $ lncli wallet psbt fund --outputs='{"bcrt1qjrdns4f5zwkv29ln86plqzs092yd5fg6nsz8re":50000000}'
@@ -41,11 +41,11 @@ $ lncli wallet psbt fund --outputs='{"bcrt1qjrdns4f5zwkv29ln86plqzs092yd5fg6nsz8
 }
 ```
 
-The first thing we notice in the response is that an outpoint was locked.
-That means, the UTXO that was chosen to fund the PSBT is currently locked and
-cannot be used by the internal wallet or any other RPC call. This lock will be
-released automatically either after 10 minutes (timeout) or once a transaction
-that spends the UTXO is published.
+The first thing we notice in the response is that an outpoint was locked. That
+means, the UTXO that was chosen to fund the PSBT is currently locked and cannot
+be used by the internal wallet or any other RPC call. This lock will be released
+automatically either after 10 minutes (timeout) or once a transaction that
+spends the UTXO is published.
 
 If we inspect the PSBT that was created, we see that the locked input was indeed
 selected, the UTXO information was attached and a change output (at index 0) was
@@ -288,19 +288,19 @@ example is not to cover each and every possible edge case but to help users of
 `lnd` understand what inputs the `lncli` utility expects.
 
 The goal is to open a channel of 1'234'567 satoshis to the node
-`03db1e56e5f76bc4018cf6f03d1bb98a7ae96e3f18535e929034f85e7f1ca2b8ac` by using
-a PSBT. That means, `lnd` can have a wallet balance of `0` and is still able to
+`03db1e56e5f76bc4018cf6f03d1bb98a7ae96e3f18535e929034f85e7f1ca2b8ac` by using a
+PSBT. That means, `lnd` can have a wallet balance of `0` and is still able to
 open a channel. We'll jump into an example right away.
 
 The new funding flow has a small caveat: _Time matters_.
 
-When opening a channel using the PSBT flow, we start the negotiation
-with the remote peer immediately so we can obtain their multisig key they are
-going to use for the channel. Then we pause the whole process until we get a
-fully signed transaction back from the user. Unfortunately there is no reliable
-way to know after how much time the remote node starts to clean up and "forgets"
-about the pending channel. If the remote node is an `lnd` node, we know it's
-after 10 minutes. **So as long as the whole process takes less than 10 minutes,
+When opening a channel using the PSBT flow, we start the negotiation with the
+remote peer immediately so we can obtain their multisig key they are going to
+use for the channel. Then we pause the whole process until we get a fully signed
+transaction back from the user. Unfortunately there is no reliable way to know
+after how much time the remote node starts to clean up and "forgets" about the
+pending channel. If the remote node is an `lnd` node, we know it's after 10
+minutes. **So as long as the whole process takes less than 10 minutes,
 everything should work fine.**
 
 ### Safety warning
@@ -315,8 +315,8 @@ instance, where the "publish" button is very easy to hit by accident.
 ### 1. Use the new `--psbt` flag in `lncli openchannel`
 
 The new `--psbt` flag in the `openchannel` command starts an interactive dialog
-between `lncli` and the user. Below the command you see an example output from
-a regtest setup. Of course all values will be different.
+between `lncli` and the user. Below the command you see an example output from a
+regtest setup. Of course all values will be different.
 
 ```shell script
 $ lncli openchannel --node_key 03db1e56e5f76bc4018cf6f03d1bb98a7ae96e3f18535e929034f85e7f1ca2b8ac --local_amt 1234567 --psbt
@@ -546,8 +546,8 @@ transaction. This can be achieved by taking the initial PSBT returned by the
 `openchannel` command. This won't work with `bitcoind` though, as it cannot take
 a PSBT as partial input for the `walletcreatefundedpsbt` command.
 
-However, the `bitcoin-cli` examples from the command line can be combined into
-a single command. For example:
+However, the `bitcoin-cli` examples from the command line can be combined into a
+single command. For example:
 
 Channel 1:
 
@@ -579,23 +579,23 @@ and the funds can be spent again by both parties.
 When doing batch transactions, **publishing** the whole transaction with
 multiple channel funding outputs **too early could lead to loss of funds**!
 
-For example, let's say we want to open two channels. We call `openchannel --psbt`
-two times, combine the funding addresses as shown above, verify the PSBT, sign
-it and finally paste it into the terminal of the first command. `lnd` then goes
-ahead and finishes the negotiations with peer 1. If successful, `lnd` publishes
-the transaction. In the meantime we paste the same PSBT into the second terminal
-window. But by now, the peer 2 for channel 2 has timed out our funding flow and
-aborts the negotiation. Normally this would be fine, we would just not publish
-the funding transaction. But in the batch case, channel 1 has already published
-the transaction that contains both channel outputs. But because we never got a
-signature from peer 2 to spend the funds now locked in a 2-of-2 multisig, the
-fund are lost (unless peer 2 cooperates in a complicated, manual recovery
-process).
+For example, let's say we want to open two channels. We call
+`openchannel --psbt` two times, combine the funding addresses as shown above,
+verify the PSBT, sign it and finally paste it into the terminal of the first
+command. `lnd` then goes ahead and finishes the negotiations with peer 1. If
+successful, `lnd` publishes the transaction. In the meantime we paste the same
+PSBT into the second terminal window. But by now, the peer 2 for channel 2 has
+timed out our funding flow and aborts the negotiation. Normally this would be
+fine, we would just not publish the funding transaction. But in the batch case,
+channel 1 has already published the transaction that contains both channel
+outputs. But because we never got a signature from peer 2 to spend the funds now
+locked in a 2-of-2 multisig, the fund are lost (unless peer 2 cooperates in a
+complicated, manual recovery process).
 
 ### Use --no_publish for batch transactions
 
 To mitigate the problem described in the section above, when open multiple
 channels in one batch transaction, it is **imperative to use the
-`--no_publish`** flag for each channel but the very last. This prevents the
-full batch transaction to be published before each and every single channel has
-fully completed its funding negotiation.
+`--no_publish`** flag for each channel but the very last. This prevents the full
+batch transaction to be published before each and every single channel has fully
+completed its funding negotiation.

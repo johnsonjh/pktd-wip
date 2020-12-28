@@ -42,9 +42,9 @@ make android
 ### Libraries
 
 After the build has succeeded, the libraries will be found in
-`mobile/build/ios/Lndmobile.framework` and
-`mobile/build/android/Lndmobile.aar`. Reference your platforms' SDK
-documentation for how to add the library to your project.
+`mobile/build/ios/Lndmobile.framework` and `mobile/build/android/Lndmobile.aar`.
+Reference your platforms' SDK documentation for how to add the library to your
+project.
 
 #### Generating proto definitions for your language.
 

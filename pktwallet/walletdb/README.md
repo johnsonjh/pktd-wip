@@ -2,8 +2,8 @@
 
 Package walletdb provides a namespaced database interface for pktwallet.
 
-A wallet essentially consists of a multitude of stored data such as private
-and public keys, key derivation bits, pay-to-script-hash scripts, and various
+A wallet essentially consists of a multitude of stored data such as private and
+public keys, key derivation bits, pay-to-script-hash scripts, and various
 metadata. One of the issues with many wallets is they are tightly integrated.
 Designing a wallet with loosely coupled components that provide specific
 functionality is ideal, however it presents a challenge in regards to data

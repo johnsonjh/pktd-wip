@@ -27,10 +27,10 @@ watchtower-related features are nearly complete or have meaningful progress, and
 we will continue to ship them as they receive further testing and become safe to
 release.
 
-Note: _For now, watchtowers will only backup the `to_local` and `to_remote` outputs
-from revoked commitments; backing up HTLC outputs is slated to be deployed in a
-future release, as the protocol can be extended to include the extra signature
-data in the encrypted blobs._
+Note: _For now, watchtowers will only backup the `to_local` and `to_remote`
+outputs from revoked commitments; backing up HTLC outputs is slated to be
+deployed in a future release, as the protocol can be extended to include the
+extra signature data in the encrypted blobs._
 
 ## Configuring a Watchtower
 
@@ -55,8 +55,7 @@ Retrieving information about your tower’s configurations can be done using
 }
 ```
 
-The entire set of watchtower configuration options can be found using
-`lnd -h`:
+The entire set of watchtower configuration options can be found using `lnd -h`:
 
 ```
 watchtower:
@@ -112,7 +111,8 @@ hidden service on startup with the following flags:
 🏔 lnd --tor.active --tor.v3 --watchtower.active
 ```
 
-The onion address is then shown in the "uris" field when queried with `lncli tower info`:
+The onion address is then shown in the "uris" field when queried with
+`lncli tower info`:
 
 ```
 ...
@@ -130,10 +130,10 @@ unless you are prepared to open your tower up to the entire Internet._
 ### Watchtower Database Directory
 
 The watchtower's database can be moved using the `watchtower.towerdir=`
-configuration option. Note that a trailing `/bitcoin/mainnet/watchtower.db`
-will be appended to the chosen directory to isolate databases for different
-chains, so setting `watchtower.towerdir=/path/to/towerdir` will yield a
-watchtower database at `/path/to/towerdir/bitcoin/mainnet/watchtower.db`.
+configuration option. Note that a trailing `/bitcoin/mainnet/watchtower.db` will
+be appended to the chosen directory to isolate databases for different chains,
+so setting `watchtower.towerdir=/path/to/towerdir` will yield a watchtower
+database at `/path/to/towerdir/bitcoin/mainnet/watchtower.db`.
 
 On Linux, for example, the default watchtower database will be located at:
 
@@ -164,8 +164,8 @@ Multiple watchtowers can be configured through this method.
 Users may optionally configure the fee rate of justice transactions by setting
 the `wtclient.sweep-fee-rate` option, which accepts values in sat/byte. The
 default value is 10 sat/byte, though users may choose to target higher rates to
-offer greater priority during fee-spikes. Modifying the `sweep-fee-rate` will
-be applied to all new updates after the daemon has been restarted.
+offer greater priority during fee-spikes. Modifying the `sweep-fee-rate` will be
+applied to all new updates after the daemon has been restarted.
 
 ### Monitoring
 

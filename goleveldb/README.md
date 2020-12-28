@@ -1,6 +1,8 @@
 # GoLevelDB
 
-This is an implementation of the [LevelDB key/value database](http:code.google.com/p/leveldb) in the [Go programming language](http:golang.org).
+This is an implementation of the
+[LevelDB key/value database](http:code.google.com/p/leveldb) in the
+[Go programming language](http:golang.org).
 
 ## Requirements
 

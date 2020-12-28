@@ -1,7 +1,7 @@
 # bdb
 
-Package bdb implements an driver for walletdb that uses bboltdb for the
-backing datastore. Package bdb is licensed under the Copyfree ISC license.
+Package bdb implements an driver for walletdb that uses bboltdb for the backing
+datastore. Package bdb is licensed under the Copyfree ISC license.
 
 ## Usage
 
@@ -25,5 +25,4 @@ if err != nil {
 
 ## License
 
-Package bdb is licensed under the [Copyfree](http://Copyfree.org) ISC
-License.
+Package bdb is licensed under the [Copyfree](http://Copyfree.org) ISC License.

@@ -56,8 +56,8 @@ A BIP for the `aezeed` scheme is being written and should be published soon.
 
 Important to know:
 
-- As with any bitcoin seed phrase, never reveal this to any person and store
-  the 24 words (and the password) in a safe place.
+- As with any bitcoin seed phrase, never reveal this to any person and store the
+  24 words (and the password) in a safe place.
 - You should never run two different `lnd` nodes with the same seed! Even if
   they aren't running at the same time. This will lead to strange/unpredictable
   behavior or even loss of funds. To migrate an `lnd` node to a new device,
@@ -70,10 +70,9 @@ The wallet password is one of the first things that has to be entered if a new
 wallet is created using `lnd`. It is completely independent from the `aezeed`
 cipher seed passphrase (which is optional). The wallet password is used to
 encrypt the sensitive parts of `lnd`'s databases, currently some parts of
-`wallet.db` and `macaroons.db`. Loss of this password does not necessarily
-mean loss of funds, as long as the `aezeed` passphrase is still available.
-But the node will need to be restored using the
-[SCB restore procedure](recovery.md).
+`wallet.db` and `macaroons.db`. Loss of this password does not necessarily mean
+loss of funds, as long as the `aezeed` passphrase is still available. But the
+node will need to be restored using the [SCB restore procedure](recovery.md).
 
 ### TLS
 
@@ -86,21 +85,21 @@ supplied to `lncli` with the `--tlscertpath` argument. `lncli` only uses that
 certificate to verify it is talking to the correct gRPC server.  
 If the key/certificate pair (`tls.cert` and `tls.key` in the main `lnd` data
 directory) is missing on startup, a new self-signed key/certificate pair is
-generated. Clients connecting to `lnd` then have to use the new certificate
-to verify they are talking to the correct server.
+generated. Clients connecting to `lnd` then have to use the new certificate to
+verify they are talking to the correct server.
 
 ### Macaroons
 
 Macaroons are used as the main authentication method in `lnd`. A macaroon is a
-cryptographically verifiable token, comparable to a [JWT](https://jwt.io/)
-or other form of API access token. In `lnd` this token consists of a _list of
+cryptographically verifiable token, comparable to a [JWT](https://jwt.io/) or
+other form of API access token. In `lnd` this token consists of a _list of
 permissions_ (what operations does the user of the token have access to) and a
 set of _restrictions_ (e.g. token expiration timestamp, IP address restriction).
 `lnd` does not keep track of the individual macaroons issued, only the key that
 was used to create (and later verify) them. That means, individual tokens cannot
 currently be invalidated, only all of them at once.  
-See the [high-level macaroons documentation](macaroons.md) or the [technical
-README](../macaroons/README.md) for more information.
+See the [high-level macaroons documentation](macaroons.md) or the
+[technical README](../macaroons/README.md) for more information.
 
 Important to know:
 
@@ -114,12 +113,12 @@ Important to know:
 
 A Static Channel Backup is a piece of data that contains all _static_
 information about a channel, like funding transaction, capacity, key derivation
-paths, remote node public key, remote node last known network addresses and
-some static settings like CSV timeout and min HTLC setting.  
+paths, remote node public key, remote node last known network addresses and some
+static settings like CSV timeout and min HTLC setting.  
 Such a backup can either be obtained as a file containing entries for multiple
-channels or by calling RPC methods to get individual (or all) channel data.
-See the section on [keeping SCBs safe](#keeping-static-channel-backups-scb-safe)
-for more information.
+channels or by calling RPC methods to get individual (or all) channel data. See
+the section on [keeping SCBs safe](#keeping-static-channel-backups-scb-safe) for
+more information.
 
 What the SCB does **not** contain is the current channel balance (or the
 associated commitment transaction). So how can a channel be restored using
@@ -171,14 +170,14 @@ lnd wallet**. When creating the wallet, after printing the seed to the command
 line, it is hashed and only the hash (or to be more exact, the BIP32 extended
 root key) is stored in the `wallet.db` file.  
 There is
-[a tool being worked on](https://github.com/lightningnetwork/lnd/pull/2373)
-that can extract the BIP32 extended root key but currently you cannot restore
-lnd with only this root key.
+[a tool being worked on](https://github.com/lightningnetwork/lnd/pull/2373) that
+can extract the BIP32 extended root key but currently you cannot restore lnd
+with only this root key.
 
 Important to know:
 
-- Setting a password/passphrase for the aezeed is meant to protect it from
-  an attacker that finds the paper/storage device. Writing down the password
+- Setting a password/passphrase for the aezeed is meant to protect it from an
+  attacker that finds the paper/storage device. Writing down the password
   alongside the 24 seed words does not enhance the security in any way.
   Therefore the password should be stored in a separate place.
 
@@ -190,15 +189,15 @@ biggest risk of losing off-chain funds, even though we do everything to mitigate
 those risks.
 
 **What files can/should I regularly backup?**  
-The single most important file that needs to be backed up whenever it changes
-is the `<lnddir>/data/chain/bitcoin/mainnet/channel.backup` file which holds
-the Static Channel Backups (SCBs). This file is only updated every time `lnd`
+The single most important file that needs to be backed up whenever it changes is
+the `<lnddir>/data/chain/bitcoin/mainnet/channel.backup` file which holds the
+Static Channel Backups (SCBs). This file is only updated every time `lnd`
 starts, a channel is opened or a channel is closed.
 
 Most consumer Lightning wallet apps upload the file to the cloud automatically.
 
-See the [SCB chapter](#static-channel-backups-scbs) for more
-information on how to use the file to restore channels.
+See the [SCB chapter](#static-channel-backups-scbs) for more information on how
+to use the file to restore channels.
 
 **What files should never be backed up to avoid problems?**  
 This is a bit of a trick question, as making the backup is not the problem.
@@ -207,17 +206,17 @@ Restoring/using an old version of a specific file called
 _never_ be done!  
 This requires some explanation:  
 The way LN channels are currently set up (until `eltoo` is implemented) is that
-both parties agree on a current balance. To make sure none of the two peers in
-a channel ever try to publish an old state of that balance, they both hand over
+both parties agree on a current balance. To make sure none of the two peers in a
+channel ever try to publish an old state of that balance, they both hand over
 their keys to the other peer that gives them the means to take _all_ funds (not
 just their agreed upon part) from a channel, if an _old_ state is ever
 published. Therefore, having an old state of a channel basically means
 forfeiting the balance to the other party.
 
-As payments in `lnd` can be made multiple times a second, it's very hard to
-make a backup of the channel database every time it is updated. And even if it
-can be technically done, the confidence that a particular state is certainly the
-most up-to-date can never be very high. That's why the focus should be on
+As payments in `lnd` can be made multiple times a second, it's very hard to make
+a backup of the channel database every time it is updated. And even if it can be
+technically done, the confidence that a particular state is certainly the most
+up-to-date can never be very high. That's why the focus should be on
 [making sure the channel database is not corrupted](#prevent-data-corruption),
 [closing out the zombie channels](#zombie-channels) and keeping your SCBs safe.
 
@@ -271,8 +270,8 @@ offline** for a length of time as a precautionary measure.
 Of course this might not be good advice for a routing node operator that wants
 to support mobile users and route for them. Nodes running on a mobile device
 tend to be offline for long periods of time. It would be bad for those users if
-they needed to open a new channel every time they want to use the wallet.
-Most mobile wallets only open private channels as they do not intend to route
+they needed to open a new channel every time they want to use the wallet. Most
+mobile wallets only open private channels as they do not intend to route
 payments through them. A routing node operator should therefore take into
 account if a channel is public or private when thinking about closing it.
 
@@ -282,8 +281,8 @@ As mentioned in the chapters [aezeed](#aezeed) and
 [SCB](#static-channel-backups-scbs) you should never use the same seed on two
 different nodes and restoring from SCB is not a migration but an emergency
 procedure.  
-What is the correct way to migrate an existing node to a new device? There is
-an easy way that should work for most people and there's the harder/costlier
+What is the correct way to migrate an existing node to a new device? There is an
+easy way that should work for most people and there's the harder/costlier
 fallback way to do it.
 
 **Option 1: Move the whole data directory to the new device**  
@@ -308,14 +307,14 @@ should be created, a new seed needs to be created.
 Follow these steps to create the **same node (with the same seed)** from
 scratch:
 
-1. On the old device, close all channels (`lncli closeallchannels`). The
-   command can take up to several minutes depending on the number of channels.
-   **Do not interrupt the command!**
+1. On the old device, close all channels (`lncli closeallchannels`). The command
+   can take up to several minutes depending on the number of channels. **Do not
+   interrupt the command!**
 1. Wait for all channels to be fully closed. If some nodes don't respond to the
    close request it can be that `lnd` will go ahead and force close those
-   channels. This means that the local balance will be time locked for up to
-   two weeks (depending on the channel size). Check `lncli pendingchannels` to
-   see if any channels are still in the process of being force closed.
+   channels. This means that the local balance will be time locked for up to two
+   weeks (depending on the channel size). Check `lncli pendingchannels` to see
+   if any channels are still in the process of being force closed.
 1. After all channels are fully closed (and `lncli pendingchannels` lists zero
    channels), `lnd` can be shut down on the old device.
 1. Start `lnd` on the new device and create a new wallet with the existing seed
@@ -341,8 +340,8 @@ list things that possibly need to be changed to work on a new device:
 - If port `9735` (or `10009` for gRPC) was forwarded on the router, these
   forwarded ports need to point to the new device. The same applies to firewall
   rules.
-- It might take more than 24 hours for a new IP address to be visible on
-  network explorers.
+- It might take more than 24 hours for a new IP address to be visible on network
+  explorers.
 - If channels show as offline after several hours, try to manually connect to
   the remote peer. They might still try to reach `lnd` on the old address.
 
@@ -361,8 +360,8 @@ node and the new Tor node:
 1. Send all on-chain funds of the old node through a Coin Join service (like
    Wasabi or Samurai/Whirlpool) until a sufficiently high anonymity set is
    reached.
-1. Create a new `lnd` node with a **new seed** that is only connected to Tor
-   and generate an on-chain address on the new node.
+1. Create a new `lnd` node with a **new seed** that is only connected to Tor and
+   generate an on-chain address on the new node.
 1. Send the mixed/coinjoined coins to the address of the new node.
 1. Start opening channels.
 1. Check an online network explorer that no IPv4 or IPv6 address is associated
@@ -376,11 +375,11 @@ corruption in the channel database (`<lnddir>/data/graph/mainnet/channel.db`).
 The following (non-exhaustive) list of things can lead to data corruption:
 
 - A spinning hard drive gets a physical shock.
-- `lnd`'s main data directory being written on an SD card or USB thumb drive
-  (SD cards and USB thumb drives _must_ be considered unsafe for critical files
-  that are written to very often, as the channel DB is).
-- `lnd`'s main data directory being written to a network drive without
-  `fsync` support.
+- `lnd`'s main data directory being written on an SD card or USB thumb drive (SD
+  cards and USB thumb drives _must_ be considered unsafe for critical files that
+  are written to very often, as the channel DB is).
+- `lnd`'s main data directory being written to a network drive without `fsync`
+  support.
 - Unclean shutdown of `lnd`.
 - Aborting channel operation commands (see next chapter).
 - Not enough disk space for a growing channel DB file.
@@ -388,17 +387,17 @@ The following (non-exhaustive) list of things can lead to data corruption:
   architectures.
 
 To avoid most of these factors, it is recommended to store `lnd`'s main data
-directory on an Solid State Drive (SSD) of a reliable manufacturer.
-An alternative or extension to that is to use a replicated disk setup. Making
-sure a power failure does not interrupt the node by running a UPS (
-uninterruptible power supply) might also make sense depending on the reliability
-of the local power grid and the amount of funds at stake.
+directory on an Solid State Drive (SSD) of a reliable manufacturer. An
+alternative or extension to that is to use a replicated disk setup. Making sure
+a power failure does not interrupt the node by running a UPS ( uninterruptible
+power supply) might also make sense depending on the reliability of the local
+power grid and the amount of funds at stake.
 
 ### Don't interrupt `lncli` commands
 
 Things can start to take a while to execute if a node has more than 50 to 100
-channels. It is extremely important to **never interrupt an `lncli` command**
-if it is manipulating the channel database, which is true for the following
+channels. It is extremely important to **never interrupt an `lncli` command** if
+it is manipulating the channel database, which is true for the following
 commands:
 
 - `openchannel`
@@ -408,9 +407,9 @@ commands:
 - `restorechanbackup`
 
 Interrupting any of those commands can lead to an inconsistent state of the
-channel database and unpredictable behavior. If it is uncertain if a command
-is really stuck or if the node is still working on it, a look at the log file
-can help to get an idea.
+channel database and unpredictable behavior. If it is uncertain if a command is
+really stuck or if the node is still working on it, a look at the log file can
+help to get an idea.
 
 ### Regular accounting/monitoring
 
@@ -421,13 +420,13 @@ can assist with these tasks.
 ### Pruned bitcoind node
 
 Running `lnd` connected to a `bitcoind` node that is running in prune mode is
-not supported! `lnd` needs to verify the funding transaction of every channel
-in the network and be able to retrieve that information from `bitcoind` which
-it cannot deliver when that information is pruned away.
+not supported! `lnd` needs to verify the funding transaction of every channel in
+the network and be able to retrieve that information from `bitcoind` which it
+cannot deliver when that information is pruned away.
 
-In theory pruning away all blocks _before_ the SegWit activation would work
-as LN channels rely on SegWit. But this has neither been tested nor would it
-be recommended/supported.
+In theory pruning away all blocks _before_ the SegWit activation would work as
+LN channels rely on SegWit. But this has neither been tested nor would it be
+recommended/supported.
 
 In addition to not running a pruned node, it is recommended to run `bitcoind`
 with the `-txindex` flag for performance reasons, though this is not strictly
@@ -442,6 +441,6 @@ problems.
 
 This is a flag that is only used for integration tests and should **never** be
 used on mainnet! Turning this flag on means that the 24 word seed will not be
-shown when creating a wallet. The seed is required to restore a node in case
-of data corruption and without it all funds (on-chain and off-chain) are
-being put at risk.
+shown when creating a wallet. The seed is required to restore a node in case of
+data corruption and without it all funds (on-chain and off-chain) are being put
+at risk.

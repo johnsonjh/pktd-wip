@@ -195,7 +195,8 @@ public class Main {
 
 #### Running the example
 
-Execute the following command in the directory where the **pom.xml** file is located.
+Execute the following command in the directory where the **pom.xml** file is
+located.
 
 ```xml
 mvn compile exec:java -Dexec.mainClass="Main" -Dexec.cleanupDaemonThreads=false
@@ -253,4 +254,9 @@ There are 2 options available that can be used in the _rpc.proto_ file :
 - option java_multiple_files = true;
 - option java_package = "network.lightning.rpc";
 
-> The package you want to use for your generated Java classes. If no explicit java_package option is given in the .proto file, then by default the proto package (specified using the "package" keyword in the .proto file) will be used. However, proto packages generally do not make good Java packages since proto packages are not expected to start with reverse domain names. If not generating Java code, this option has no effect.
+> The package you want to use for your generated Java classes. If no explicit
+> java_package option is given in the .proto file, then by default the proto
+> package (specified using the "package" keyword in the .proto file) will be
+> used. However, proto packages generally do not make good Java packages since
+> proto packages are not expected to start with reverse domain names. If not
+> generating Java code, this option has no effect.

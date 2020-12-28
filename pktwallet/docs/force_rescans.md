@@ -3,10 +3,9 @@
 It is unlikely, but possible and unfortunate, that transaction history in the
 wallet database may not represent reality. This may be due to a programming
 mistake or the transaction database becoming corrupted. Thankfully, all
-transactions are publicly recorded on the blockchain, and transactions
-necessary for a fully functional wallet can be recovered. This process is
-called rescanning, and the following guide will demonstrate how to force such a
-rescan.
+transactions are publicly recorded on the blockchain, and transactions necessary
+for a fully functional wallet can be recovered. This process is called
+rescanning, and the following guide will demonstrate how to force such a rescan.
 
 Rescans are automatically performed each time the wallet syncs to the network.
 These are used to "catch up" the wallet to the newest best block in the block
@@ -36,8 +35,8 @@ The second case is how a forced rescan is performed.
 pktwallet will not drop transaction history by itself, as this is something that
 should not be necessary under normal wallet operation. However, a tool,
 `dropwtxmgr`, is provided in the `cmd/dropwtxmgr` directory which may be used to
-drop the wallet transaction manager (wtxmgr) history from a wallet database.
-The tool may already be installed in your PATH, but if not, installing it is easy:
+drop the wallet transaction manager (wtxmgr) history from a wallet database. The
+tool may already be installed in your PATH, but if not, installing it is easy:
 
 ```
 $ cd $GOPATH/src/github.com/pkt-cash/pktd/pktwallet/cmd/dropwtxmgr

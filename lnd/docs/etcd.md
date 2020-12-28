@@ -7,8 +7,8 @@ improving robustness trough eg. replicating essential data.
 Building on `kvdb` in v0.11.0 we're adding experimental [etcd](https://etcd.io)
 support to LND. As this is an unstable feature heavily in development, it still
 has _many_ rough edges for the time being. It is therefore highly recommended to
-not use LND on `etcd` in any kind of production environment especially not
-on bitcoin mainnet.
+not use LND on `etcd` in any kind of production environment especially not on
+bitcoin mainnet.
 
 ## Building LND with etcd support
 
@@ -80,5 +80,5 @@ This is currently not supported.
 
 ## Disclaimer
 
-As mentioned before this is an experimental feature, and with that your data
-may be lost. Use at your own risk!
+As mentioned before this is an experimental feature, and with that your data may
+be lost. Use at your own risk!

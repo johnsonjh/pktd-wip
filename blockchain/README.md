@@ -2,13 +2,13 @@
 
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](http://Copyfree.org)
 
-Package blockchain implements block handling and chain selection rules.
-The test coverage is currently only around 60%, but will be increasing over
-time. Package blockchain is licensed under the liberal ISC license.
+Package blockchain implements block handling and chain selection rules. The test
+coverage is currently only around 60%, but will be increasing over time. Package
+blockchain is licensed under the liberal ISC license.
 
-This package has intentionally been designed so it can be used as a
-standalone package for any projects needing to handle processing of blocks
-into a bitcoin-like block chain.
+This package has intentionally been designed so it can be used as a standalone
+package for any projects needing to handle processing of blocks into a
+bitcoin-like block chain.
 
 ## Processing Overview
 
@@ -29,18 +29,17 @@ is by no means exhaustive:
   depends on the block's position within the block chain
 - Perform a series of more thorough checks that depend on the block's position
   within the block chain such as verifying block difficulties adhere to
-  difficulty retarget rules, timestamps are after the median of the last
-  several blocks, all transactions are finalized, checkpoint blocks match, and
-  block versions are in line with the previous blocks
+  difficulty retarget rules, timestamps are after the median of the last several
+  blocks, all transactions are finalized, checkpoint blocks match, and block
+  versions are in line with the previous blocks
 - Determine how the block fits into the chain and perform different actions
   accordingly in order to ensure any side chains which have higher difficulty
   than the main chain become the new main chain
 - When a block is being connected to the main chain (either through
-  reorganization of a side chain to the main chain or just extending the
-  main chain), perform further checks on the block's transactions such as
-  verifying transaction duplicates, script complexity for the combination of
-  connected scripts, coinbase maturity, double spends, and connected
-  transaction values
+  reorganization of a side chain to the main chain or just extending the main
+  chain), perform further checks on the block's transactions such as verifying
+  transaction duplicates, script complexity for the combination of connected
+  scripts, coinbase maturity, double spends, and connected transaction values
 - Run the transaction scripts to verify the spender is allowed to spend the
   coins
 - Insert the block into the block database

@@ -1,10 +1,12 @@
 # Fuzzing LND
 
-The `fuzz` package is organized into subpackages which are named after the `lnd` package they test. Each subpackage has its own set of fuzz targets.
+The `fuzz` package is organized into subpackages which are named after the `lnd`
+package they test. Each subpackage has its own set of fuzz targets.
 
 ## Installation
 
-This section will cover setup and installation of `go-fuzz` and fuzzing binaries.
+This section will cover setup and installation of `go-fuzz` and fuzzing
+binaries.
 
 - First, we must get `go-fuzz`.
 
@@ -12,14 +14,16 @@ This section will cover setup and installation of `go-fuzz` and fuzzing binaries
 go get -u github.com/dvyukov/go-fuzz/...
 ```
 
-- The following is a command to build all fuzzing harnesses for a specific package.
+- The following is a command to build all fuzzing harnesses for a specific
+  package.
 
 ```shell
 cd fuzz/<package>
 $ find * -maxdepth 1 -regex '[A-Za-z0-9\-_.]'* -not -name fuzz_utils.go | sed 's/\.go$//1' | xargs -I % sh -c 'go-fuzz-build -func Fuzz_% -o <package>-%-fuzz.zip github.com/lightningnetwork/lnd/fuzz/<package>'
 ```
 
-- This may take a while since this will create zip files associated with each fuzzing target.
+- This may take a while since this will create zip files associated with each
+  fuzzing target.
 
 - Now, run `go-fuzz` with `workdir` set as below!
 
@@ -57,9 +61,10 @@ func Fuzz(data []byte) int
 
 If:
 
-- `-1` is returned, the fuzzing input is ignored
-  ( `0` is returned, `go-fuzz` will add the input to the corpus and deprioritize it in future mutations.
-  ( `1` is returned, `go-fuzz` will add the input to the corpus and prioritize it in future mutations.
+- `-1` is returned, the fuzzing input is ignored ( `0` is returned, `go-fuzz`
+  will add the input to the corpus and deprioritize it in future mutations. (
+  `1` is returned, `go-fuzz` will add the input to the corpus and prioritize it
+  in future mutations.
 
 ### Conclusion
 
