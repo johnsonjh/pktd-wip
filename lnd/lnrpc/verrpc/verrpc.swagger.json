@@ -4,8 +4,12 @@
     "title": "verrpc/verrpc.proto",
     "version": "version not set"
   },
-  "consumes": ["application/json"],
-  "produces": ["application/json"],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
   "paths": {
     "/v2/versioner/version": {
       "get": {
@@ -25,7 +29,9 @@
             }
           }
         },
-        "tags": ["Versioner"]
+        "tags": [
+          "Versioner"
+        ]
       }
     }
   },

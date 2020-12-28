@@ -4,8 +4,12 @@
     "title": "signrpc/signer.proto",
     "version": "version not set"
   },
-  "consumes": ["application/json"],
-  "produces": ["application/json"],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
   "paths": {
     "/v2/signer/inputscript": {
       "post": {
@@ -36,7 +40,9 @@
             }
           }
         ],
-        "tags": ["Signer"]
+        "tags": [
+          "Signer"
+        ]
       }
     },
     "/v2/signer/sharedkey": {
@@ -67,7 +73,9 @@
             }
           }
         ],
-        "tags": ["Signer"]
+        "tags": [
+          "Signer"
+        ]
       }
     },
     "/v2/signer/signmessage": {
@@ -99,7 +107,9 @@
             }
           }
         ],
-        "tags": ["Signer"]
+        "tags": [
+          "Signer"
+        ]
       }
     },
     "/v2/signer/signraw": {
@@ -131,7 +141,9 @@
             }
           }
         ],
-        "tags": ["Signer"]
+        "tags": [
+          "Signer"
+        ]
       }
     },
     "/v2/signer/verifymessage": {
@@ -163,7 +175,9 @@
             }
           }
         ],
-        "tags": ["Signer"]
+        "tags": [
+          "Signer"
+        ]
       }
     }
   },

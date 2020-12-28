@@ -4,8 +4,12 @@
     "title": "chainrpc/chainnotifier.proto",
     "version": "version not set"
   },
-  "consumes": ["application/json"],
-  "produces": ["application/json"],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
   "paths": {
     "/v2/chainnotifier/register/blocks": {
       "post": {
@@ -45,7 +49,9 @@
             }
           }
         ],
-        "tags": ["ChainNotifier"]
+        "tags": [
+          "ChainNotifier"
+        ]
       }
     },
     "/v2/chainnotifier/register/confirmations": {
@@ -86,7 +92,9 @@
             }
           }
         ],
-        "tags": ["ChainNotifier"]
+        "tags": [
+          "ChainNotifier"
+        ]
       }
     },
     "/v2/chainnotifier/register/spends": {
@@ -127,7 +135,9 @@
             }
           }
         ],
-        "tags": ["ChainNotifier"]
+        "tags": [
+          "ChainNotifier"
+        ]
       }
     }
   },

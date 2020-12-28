@@ -4,8 +4,12 @@
     "title": "autopilotrpc/autopilot.proto",
     "version": "version not set"
   },
-  "consumes": ["application/json"],
-  "produces": ["application/json"],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
   "paths": {
     "/v2/autopilot/modify": {
       "post": {
@@ -35,7 +39,9 @@
             }
           }
         ],
-        "tags": ["Autopilot"]
+        "tags": [
+          "Autopilot"
+        ]
       }
     },
     "/v2/autopilot/scores": {
@@ -76,7 +82,9 @@
             "format": "boolean"
           }
         ],
-        "tags": ["Autopilot"]
+        "tags": [
+          "Autopilot"
+        ]
       },
       "post": {
         "summary": "SetScores attempts to set the scores used by the running autopilot agent,\nif the external scoring heuristic is enabled.",
@@ -105,7 +113,9 @@
             }
           }
         ],
-        "tags": ["Autopilot"]
+        "tags": [
+          "Autopilot"
+        ]
       }
     },
     "/v2/autopilot/status": {
@@ -126,7 +136,9 @@
             }
           }
         },
-        "tags": ["Autopilot"]
+        "tags": [
+          "Autopilot"
+        ]
       }
     }
   },
