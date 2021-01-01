@@ -101,7 +101,7 @@ arrest
 arrive
 arrow
 art
-artifact
+artefact
 artist
 artwork
 ask
