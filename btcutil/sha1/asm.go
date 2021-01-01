@@ -1,6 +1,6 @@
 // +build ignore
 
-package sha1
+package main
 
 func main() {
 	TEXT("block", 0, "func(h *[5]uint32, m []byte)")

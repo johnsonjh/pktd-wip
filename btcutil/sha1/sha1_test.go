@@ -1,4 +1,4 @@
-package sha1
+package main
 
 import (
 	gosha1 "crypto/sha1"
@@ -9,8 +9,6 @@ import (
 
 	gl "go.uber.org/goleak"
 )
-
-//go:generate go run asm.go -out sha1.s -stubs stub.go
 
 func TestASHA1Conform(
 	t *stest.T,
