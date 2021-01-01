@@ -1,4 +1,4 @@
-package main
+package sha1
 
 import "encoding/binary"
 
