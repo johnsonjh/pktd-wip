@@ -592,7 +592,7 @@ func parseChannelUpdateCompatabilityMode(r *bufio.Reader,
 	// channel updates. These bytes will _almost_ always be 258 or the type
 	// of the ChannelUpdate message.
 	typeInt := binary.BigEndian.Uint16(maybeTypeBytes)
-/*	if typeInt == MsgChannelUpdate {
+	/*	if typeInt == MsgChannelUpdate {
 		// At this point it's likely the case that this is a channel
 		// update message with its type prefixed, so we'll snip off the
 		// first two bytes and parse it as normal.
