@@ -102,7 +102,7 @@ func ldflags() string {
 
 func test() {
 	fmt.Println("Running tests")
-	exe(exeNoRedirect, "go", "test", "-count=1", "-cover", "-covermode=atomic", "-bench=.", "-parallel=1", "-cpu=2", "./...", "-tags=dev")
+	exe(exeNoRedirect, "go", "test", "-count=1", "-cover", "-covermode=atomic", "-parallel=2", "-cpu=2", "./...")
 }
 
 var regex = regexp.MustCompile("[A-Z0-9_]+=.*")
