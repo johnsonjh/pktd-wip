@@ -25,6 +25,7 @@ require (
 	github.com/cpuguy83/go-md2man/v2 v2.0.0 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc
 	github.com/dchest/blake2b v1.0.0
+	github.com/decred/dcrd/lru v1.1.0 // indirect
 	github.com/dustin/go-humanize v1.0.1-0.20200219035652-afde56e7acac // indirect
 	github.com/emirpasic/gods v1.12.1-0.20201118132343-79df803e554c
 	github.com/frankban/quicktest v1.11.3 // indirect
@@ -53,8 +54,8 @@ require (
 	github.com/minio/sha256-simd v0.1.2-0.20190917233721-f675151bb5e1
 	github.com/mitchellh/mapstructure v1.4.0 // indirect
 	github.com/modern-go/reflect2 v1.0.2-0.20200602030031-7e6ae53ffa0b // indirect
-	github.com/nxadm/tail v1.4.6-0.20201001195649-edf6bc2dfc36 // indirect
-	github.com/onsi/ginkgo v1.14.3-0.20201215232527-efb9e6987c00
+	github.com/nxadm/tail v1.4.7-0.20201224113910-cab015346135 // indirect
+	github.com/onsi/ginkgo v1.14.3-0.20201230225307-071c3690e527
 	github.com/onsi/gomega v1.10.5-0.20201208201658-3ed17884e444
 	github.com/pkg/errors v0.9.2-0.20201214064552-5dd12d0cfe7f // indirect
 	github.com/prometheus/client_golang v1.9.0
@@ -62,6 +63,7 @@ require (
 	github.com/sethgrid/pester v1.1.1-0.20200617174401-d2ad9ec9a8b6
 	github.com/soheilhy/cmux v0.1.5-0.20181025144106-8a8ea3c53959 // indirect
 	github.com/sony/sonyflake v1.0.1-0.20200827011719-848d664ceea4
+	github.com/stretchr/objx v0.3.0 // indirect
 	github.com/stretchr/testify v1.6.2-0.20201103103935-92707c0b2d50
 	github.com/tmc/grpc-websocket-proxy v0.0.0-20190109142713-0ad062ec5ee5 // indirect
 	github.com/tv42/zbase32 v0.0.0-20190604154422-aacc64a8f915
@@ -69,8 +71,8 @@ require (
 	gitlab.com/NebulousLabs/fastrand v0.0.0-20181126182046-603482d69e40 // indirect
 	gitlab.com/NebulousLabs/go-upnp v0.0.0-20181011194642-3a71999ed0d3 // indirect
 	go.etcd.io/bbolt v1.3.5
-	go.gridfinity.dev/goc25519sm v1.6.1-0.20201228173948-c117065107f0
-	go.gridfinity.dev/leaktestfe v0.0.0-20201225053922-7b9c85e25216 // indirect
+	go.gridfinity.dev/goc25519sm v1.6.1-0.20201231135837-33f64426a208
+	go.gridfinity.dev/leaktestfe v0.0.0-20201231171934-2610272deabe // indirect
 	go.mongodb.org/mongo-driver v1.4.4 // indirect
 	go.uber.org/goleak v1.1.11-0.20200902203756-89d54f0adef2
 	go.uber.org/multierr v1.6.1-0.20201124182017-e015acf18bb3 // indirect
@@ -79,11 +81,10 @@ require (
 	golang.org/x/crypto v0.0.0-20201221181555-eec23a3978ad
 	golang.org/x/net v0.0.0-20201224014010-6772e930b67b
 	golang.org/x/sync v0.0.0-20201207232520-09787c993a3a // indirect
-	golang.org/x/sys v0.0.0-20201223074533-0d417f636930
+	golang.org/x/sys v0.0.0-20201231184435-2d18734c6014
 	golang.org/x/term v0.0.0-20201210144234-2321bbc49cbf
 	golang.org/x/text v0.3.5-0.20201208001344-75a595aef632 // indirect
 	golang.org/x/time v0.0.0-20201208040808-7e3f01d25324
-	golang.org/x/tools v0.0.0-20201228204837-84d76fe3206d // indirect
 	google.golang.org/genproto v0.0.0-20201214200347-8c77b98c765d // indirect
 	google.golang.org/grpc v1.34.0
 	google.golang.org/protobuf v1.25.0 // indirect
