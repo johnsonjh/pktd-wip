@@ -10,7 +10,6 @@ import (
 	gl "go.uber.org/goleak"
 )
 
-
 func TestASHA1Conform(
 	t *stest.T,
 ) {
