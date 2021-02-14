@@ -1,10 +1,11 @@
-// Copyright 2020 Jeffrey H. Johnson.
-// Copyright 2020 Gridfinity, LLC.
+// Copyright 2021 Gridfinity, LLC.
 // Copyright 2011 The OpenSSL Project.
 // Copyright 1998 Eric Young (eay@cryptsoft.com).
 // Copyright 2015 Google, Inc.
-// Copyright 2019 The Go Authors.
+// Copyright 2020 The Go Authors.
+//
 // All rights reserved.
+//
 // Use of this source code is governed by the BSD-style
 // license that can be found in the LICENSE file.
 

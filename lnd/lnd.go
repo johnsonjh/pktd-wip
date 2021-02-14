@@ -79,8 +79,7 @@ func WalletUnlockerAuthOptions(cfg *Config) ([]grpc.DialOption, er.R) {
 // AdminAuthOptions returns a list of DialOptions that can be used to
 // authenticate with the RPC server with admin capabilities.
 //
-// NOTE: This should only be called after the RPCListener has signaled it is
-// ready.
+// NOTE: Call only after the RPCListener has signaled it is ready.
 func AdminAuthOptions(cfg *Config) ([]grpc.DialOption, er.R) {
 	creds, err := credentials.NewClientTLSFromFile(cfg.TLSCertPath, "")
 	if err != nil {
@@ -155,8 +154,7 @@ type RPCSubserverConfig struct {
 
 	// MacaroonValidator is a custom macaroon validator that should be used
 	// instead of the default lnd validator. If specified, the custom
-	// validator is used for all URIs specified in the above Permissions
-	// map.
+	// validator is used for all URIs specified in the above Permissions map.
 	MacaroonValidator macaroons.MacaroonValidator
 }
 
@@ -1580,6 +1578,6 @@ func parseHeaderStateAssertion(state string) (*headerfs.FilterHeader, er.R) {
 func init() {
 	// Register licensing
 	lndLegal.RegisterLicense(
-		"\nCopyright (C) 2015-2020 Lightning Labs and The Lightning Network Developers.\nCopyright (c) 2019 Caleb James DeLisle.\nCopyright (c) 2020 Anode LLC.\nCopyright (c) 2020 Jeffrey H. Johnson\nCopyright (c) 2020 Gridfinity, LLC.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.",
+		"\nCopyright (C) 2015-2021 Lightning Labs and The Lightning Network Developers.\nCopyright (c) 2021 Caleb James DeLisle.\nCopyright (c) 2021 Anode LLC.\nCopyright (c) 2021 Gridfinity, LLC.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.",
 	)
 }
