@@ -1,5 +1,6 @@
-// Copyright 2021 Gridfinity, LLC.
-// Copyright 2020 The Go Authors.
+// Copyright © 2021 Jeffrey H. Johnson. <trnsz@pobox.com>
+// Copyright © 2021 Gridfinity, LLC.
+// Copyright © 2020 The Go Authors.
 //
 // All rights reserved.
 //
@@ -14,7 +15,7 @@ import (
 	"testing"
 	"time"
 
-	goc25519sm "go.gridfinity.dev/goc25519sm"
+	goc25519sm "github.com/johnsonjh/goc25519sm"
 )
 
 func benchmarkOldScalarBaseMult(

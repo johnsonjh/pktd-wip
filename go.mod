@@ -73,8 +73,8 @@ require (
 	gitlab.com/NebulousLabs/fastrand v0.0.0-20181126182046-603482d69e40 // indirect
 	gitlab.com/NebulousLabs/go-upnp v0.0.0-20181011194642-3a71999ed0d3 // indirect
 	go.etcd.io/bbolt v1.3.5
-	go.gridfinity.dev/goc25519sm v1.6.1-0.20210108174116-25fab8d7b2e9
-	go.gridfinity.dev/leaktestfe v0.0.0-20210108112747-8342b7b9d70f // indirect
+	github.com/johnsonjh/goc25519sm v1.6.1-0.20210108174116-25fab8d7b2e9
+	github.com/johnsonjh/leaktestfe v0.0.0-20210108112747-8342b7b9d70f // indirect
 	go.mongodb.org/mongo-driver v1.4.0-beta2.0.20201217212712-60f76f5b1810 // indirect
 	go.uber.org/goleak v1.1.11-0.20200902203756-89d54f0adef2
 	go.uber.org/multierr v1.6.1-0.20201124182017-e015acf18bb3 // indirect

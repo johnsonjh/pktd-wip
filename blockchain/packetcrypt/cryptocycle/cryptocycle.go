@@ -1,4 +1,6 @@
-// Copyright (c) 2019 Caleb James DeLisle
+// Copyright © 2019 Caleb James DeLisle.
+// Copyright © 2021 Jeffrey H. Johnson. <trnsz@pobox.com>
+//
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
@@ -11,7 +13,7 @@ import (
 
 	"github.com/aead/chacha20/chacha"
 
-	goc25519sm "go.gridfinity.dev/goc25519sm"
+	goc25519sm "github.com/johnsonjh/goc25519sm"
 	"golang.org/x/crypto/poly1305"
 
 	"github.com/pkt-cash/pktd/blockchain/packetcrypt/randhash/interpret"

@@ -1,6 +1,7 @@
-// Copyright 2021 Gridfinity, LLC.
-// Copyright 2020 Frank Denis <j at pureftpd dot org>.
-// Copyright 2012 The Go Authors.
+// Copyright © 2021 Jeffrey H. Johnson. <trnsz@pobox.com>
+// Copyright © 2021 Gridfinity, LLC.
+// Copyright © 2020 Frank Denis <j at pureftpd dot org>.
+// Copyright © 2012 The Go Authors.
 //
 // All rights reserved.
 //
@@ -16,7 +17,7 @@ import (
 	"testing"
 
 	u "github.com/pkt-cash/pktd/blockchain/packetcrypt/cryptocycle/testutil"
-	goc25519sm "go.gridfinity.dev/goc25519sm"
+	goc25519sm "github.com/johnsonjh/goc25519sm"
 )
 
 const (

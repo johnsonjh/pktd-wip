@@ -1,8 +1,9 @@
-// Copyright 2021 Gridfinity, LLC.
-// Copyright 2011 The OpenSSL Project.
-// Copyright 1998 Eric Young (eay@cryptsoft.com).
-// Copyright 2015 Google, Inc.
-// Copyright 2020 The Go Authors.
+// Copyright © 2021 Jeffrey H. Johnson <trnsz@pobox.com>
+// Copyright © 2021 Gridfinity, LLC.
+// Copyright © 2011 The OpenSSL Project.
+// Copyright © 1998 Eric Young (eay@cryptsoft.com).
+// Copyright © 2015 Google, Inc.
+// Copyright © 2020 The Go Authors.
 //
 // All rights reserved.
 //
@@ -12,7 +13,7 @@
 package cryptocycle_test
 
 import (
-	goc25519sm "go.gridfinity.dev/goc25519sm"
+	goc25519sm "github.com/johnsonjh/goc25519sm"
 )
 
 // testVectors from BoringSSL

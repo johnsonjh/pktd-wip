@@ -1,6 +1,7 @@
-// Copyright (c) 2021 Gridfinity, LLC.
-// Copyright (c) 2017 The Namecoin developers
-// Copyright (c) 2019 The btcsuite developers
+// Copyrgith © 2021 Jeffrey H. Johnson. <trnsz@pobox.com>
+// Copyright © 2021 Gridfinity, LLC.
+// Copyright © 2017 The Namecoin developers
+// Copyright © 2019 The btcsuite developers
 //
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.

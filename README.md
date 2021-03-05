@@ -1,6 +1,10 @@
 # PKT Cash
 
+----
+
 ## A blockchain utilizing [PacketCrypt](<(https://pkt.cash/PacketCrypt-2020-09-04.pdf)>), a new _bandwidth-hard_ proof-of-work algorithm
+
+----
 
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](http://Copyfree.org)
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/gridfinity/pktd)](https://pkg.go.dev/github.com/gridfinity/pktd)
@@ -11,6 +15,8 @@
 [![GitHubCodeSize](https://img.shields.io/github/languages/code-size/gridfinity/pktd.svg)](https://github.com/gridfinity/pktd)
 [![CoverageStatus](https://coveralls.io/repos/gridfinity/pktd/badge.svg?branch=develop)](https://coveralls.io/gridfinity/pktd?branch=develop)
 [![TickgitTODOs](https://img.shields.io/endpoint?url=https://api.tickgit.com/badge?repo=github.com/gridfinity/pktd)](https://www.tickgit.com/browse?repo=github.com/gridfinity/pktd)
+
+----
 
 ### pktd
 
@@ -64,6 +70,8 @@ Additional alternative wallet packages are currently under active development.
 - A somewhat recent release of Git (_used to clone the repository, and by Go to
   download dependencies_).
 
+----
+
 ### Building pktd
 
 - Using `git`, clone the project from the repository:
@@ -80,29 +88,7 @@ _Optionally_, run extended tests and generate code coverage reports:
   required_.)
   - `PATH=$(go env GOPATH)/bin:${PATH} ./cov_report.sh`
 
-### Bug Reporting
-
-The **GitHub** [**Issue Tracker**](https://github.com/gridfinity/pktd/issues) is
-used for this project.
-
-- All users submitting a
-  [new bug report](https://github.com/gridfinity/pktd/issues/new/choose) should
-  attach the output of:
-  - `go version`, `go env`
-    - `git describe --tags --always --abbrev=40`, `git status -s -b`
-  - macOS X users should attach the output of:
-    - `uname -a`, `sw_vers`
-    - `system_profiler -detailLevel mini`, `serverinfo --plist`.
-  - Linux users should attach the output of:
-    - `uname -a`, `cat /etc/*elease`, `lsb_release -a`
-  - Windows users should attach the _PowerShell_ output of:
-    - `Get-CimInstance Win32_OperatingSystem | FL * | ?{$_ -notmatch 'SerialNumber'}`
-  - POSIX environment users (_including_ Linux, OS X, WSL/WSL2, other UNIX
-    systems, etc.) should attach the output of:
-    - `command -p getconf -a`
-
-This extra information is useful to identify potential operating system,
-distribution, or environment-specific issues.
+----
 
 ### Linux Distributions
 
@@ -135,6 +121,8 @@ compiled from unmodified source code, using the official toolchain. If you have
 any doubts about your installed Go software, Google provides an automated
 [Go installer for Linux](https://storage.googleapis.com/golang/getgo/installer_linux).
 
+----
+
 ### Documentation
 
 Currently, documentation for `pktd`, `pktwallet`, and `pktctl` is a
@@ -147,13 +135,15 @@ containing the `pktd` source code tree, then loading
 in a web browser.
 
 The same **GoDoc** documentation is also available at
-[pkg.go.dev/github.com/gridfinity/pktd](https://pkg.go.dev/github.com/gridfinity/pktd),
+[pkg.go.dev/github.com/johnsonjh/pktd](https://pkg.go.dev/github.com/johnsonjh/pktd),
 which does not require a local copy of the source code, or the `godoc` tool
 installed.
 
 There is also documentation in the
-[docs](https://github.com/gridfinity/pktd/tree/develop/docs) directory of the
+[docs](https://github.com/johnsonjh/pktd/tree/develop/docs) directory of the
 source tree available for review.
+
+----
 
 ### Community
 
@@ -163,7 +153,10 @@ source tree available for review.
 - Other options are available and listed on the
   [PKT.cash](https://pkt.cash/community/) web site.
 
+----
+
 ### License
 
 `pktd` is licensed under the [Copyfree](http://Copyfree.org) **ISC License**.
 
+----

@@ -1,6 +1,7 @@
-// Copyright (c) 2021 Gridfinity, LLC.
-// Copyright (c) 2016 The decred developers.
-// Copyright (c) 2015 The btcsuite developers.
+// Copyright © 2021 Jeffrey H. Johnson. <trnsz@pobox.com>
+// Copyright © 2021 Gridfinity, LLC.
+// Copyright © 2016 The decred developers.
+// Copyright © 2015 The btcsuite developers.
 //
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
