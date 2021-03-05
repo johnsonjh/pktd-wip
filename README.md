@@ -7,14 +7,14 @@
 ----
 
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](http://Copyfree.org)
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/gridfinity/pktd)](https://pkg.go.dev/github.com/gridfinity/pktd)
-[![GoReport](https://goreportcard.com/badge/github.com/gridfinity/pktd)](https://goreportcard.com/report/github.com/gridfinity/pktd)
-[![GitHubRelease](https://img.shields.io/github/release/gridfinity/pktd.svg)](https://github.com/gridfinity/pktd/releases/)
-[![GitHubTag](https://img.shields.io/github/tag/gridfinity/pktd.svg)](https://github.com/gridfinity/pktd/tags/)
-[![LocCount](https://img.shields.io/tokei/lines/github/gridfinity/pktd.svg)](https://github.com/XAMPPRocky/tokei)
-[![GitHubCodeSize](https://img.shields.io/github/languages/code-size/gridfinity/pktd.svg)](https://github.com/gridfinity/pktd)
-[![CoverageStatus](https://coveralls.io/repos/gridfinity/pktd/badge.svg?branch=develop)](https://coveralls.io/gridfinity/pktd?branch=develop)
-[![TickgitTODOs](https://img.shields.io/endpoint?url=https://api.tickgit.com/badge?repo=github.com/gridfinity/pktd)](https://www.tickgit.com/browse?repo=github.com/gridfinity/pktd)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/johnsonjh/pktd)](https://pkg.go.dev/github.com/johnsonjh/pktd)
+[![GoReport](https://goreportcard.com/badge/github.com/johnsonjh/pktd)](https://goreportcard.com/report/github.com/johnsonjh/pktd)
+[![GitHubRelease](https://img.shields.io/github/release/johnsonjh/pktd.svg)](https://github.com/johnsonjh/pktd/releases/)
+[![GitHubTag](https://img.shields.io/github/tag/johnsonjh/pktd.svg)](https://github.com/johnsonjh/pktd/tags/)
+[![LocCount](https://img.shields.io/tokei/lines/github/johnsonjh/pktd.svg)](https://github.com/XAMPPRocky/tokei)
+[![GitHubCodeSize](https://img.shields.io/github/languages/code-size/johnsonjh/pktd.svg)](https://github.com/johnsonjh/pktd)
+[![CoverageStatus](https://coveralls.io/repos/johnsonjh/pktd/badge.svg?branch=develop)](https://coveralls.io/johnsonjh/pktd?branch=develop)
+[![TickgitTODOs](https://img.shields.io/endpoint?url=https://api.tickgit.com/badge?repo=github.com/johnsonjh/pktd)](https://www.tickgit.com/browse?repo=github.com/johnsonjh/pktd)
 
 ----
 
@@ -60,12 +60,14 @@ Unlike most cryptocurrency software, `pktd` does _NOT_ provide any "built-in"
 wallet capability. This intentional design decision was made to enhance overall
 security and software modularity. While this means you cannot make or receive
 payments using `pktd` directly; this functionality is provided by the bundled,
-but separate, [pktwallet](https://github.com/gridfinity/pktd/pktwallet) package.
+but separate, [pktwallet](https://github.com/pkt-cash/pktd/pktwallet/) package.
 Additional alternative wallet packages are currently under active development.
+
+----
 
 ### Requirements
 
-- [Go](http://golang.org) (_Golang_), release **1.14.1** or later, running on a
+- [Go](http://golang.org/) (_Golang_), release **1.14.1** or later, running on a
   supported **64-bit** platform.
 - A somewhat recent release of Git (_used to clone the repository, and by Go to
   download dependencies_).
@@ -75,7 +77,7 @@ Additional alternative wallet packages are currently under active development.
 ### Building pktd
 
 - Using `git`, clone the project from the repository:
-  - `git clone https://github.com/gridfinity/pktd`
+  - `git clone -b develop-johnsonjh https://github.com/johnsonjh/pktd`
 - Then, use the `do` script to build `pktd`, `pktwallet`, and `pktctl`:
   - `cd pktd && ./do`
 
@@ -131,7 +133,7 @@ Currently, documentation for `pktd`, `pktwallet`, and `pktctl` is a
 **GoDoc** documentation is provided, but is mostly developer-focused at this
 time. It can be viewed by running `godoc -http=:6543` in the directory
 containing the `pktd` source code tree, then loading
-[http://localhost:6543/pkg/github.com/gridfinity/pktd/](http://localhost:6543/pkg/github.com/gridfinity/pktd/)
+[http://localhost:6543/pkg/github.com/johnsonjh/pktd/](http://localhost:6543/pkg/github.com/gridfinity/pktd/)
 in a web browser.
 
 The same **GoDoc** documentation is also available at
