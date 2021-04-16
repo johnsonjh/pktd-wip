@@ -5,7 +5,7 @@ name = "go"
 enabled = true
 
   [analyzers.meta]
-  import_paths = ["github.com/gridfinity/pktd"]
+  import_paths = ["github.com/johnsonjh/pktd-wip"]
 
 [[analyzers]]
 name = "test-coverage"
@@ -19,20 +19,8 @@ enabled = true
 name = "shell"
 enabled = true
 
-[[transformers]]
-name = "rubocop"
-enabled = true
-
-[[transformers]]
-name = "black"
-enabled = true
-
-[[transformers]]
-name = "gofmt"
-enabled = true
-
-[[transformers]]
-name = "yapf"
+[[analyzers]]
+name = "secrets"
 enabled = true
 
 [[transformers]]
@@ -52,5 +40,21 @@ name = "prettier"
 enabled = true
 
 [[transformers]]
+name = "black"
+enabled = true
+
+[[transformers]]
+name = "gofmt"
+enabled = true
+
+[[transformers]]
+name = "yapf"
+enabled = true
+
+[[transformers]]
 name = "standardjs"
+enabled = true
+
+[[transformers]]
+name = "rubocop"
 enabled = true
