@@ -1,10 +1,10 @@
 # PKT Cash
 
-----
+---
 
 ## A blockchain utilizing [PacketCrypt](<(https://pkt.cash/PacketCrypt-2020-09-04.pdf)>), a new _bandwidth-hard_ proof-of-work algorithm
 
-----
+---
 
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](http://Copyfree.org)
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/johnsonjh/pktd)](https://pkg.go.dev/github.com/johnsonjh/pktd)
@@ -16,7 +16,7 @@
 [![CoverageStatus](https://coveralls.io/repos/johnsonjh/pktd/badge.svg?branch=develop)](https://coveralls.io/johnsonjh/pktd?branch=develop)
 [![TickgitTODOs](https://img.shields.io/endpoint?url=https://api.tickgit.com/badge?repo=github.com/johnsonjh/pktd)](https://www.tickgit.com/browse?repo=github.com/johnsonjh/pktd)
 
-----
+---
 
 ### pktd
 
@@ -63,7 +63,7 @@ payments using `pktd` directly; this functionality is provided by the bundled,
 but separate, [pktwallet](https://github.com/pkt-cash/pktd/pktwallet/) package.
 Additional alternative wallet packages are currently under active development.
 
-----
+---
 
 ### Requirements
 
@@ -72,7 +72,7 @@ Additional alternative wallet packages are currently under active development.
 - A somewhat recent release of Git (_used to clone the repository, and by Go to
   download dependencies_).
 
-----
+---
 
 ### Building pktd
 
@@ -90,7 +90,7 @@ _Optionally_, run extended tests and generate code coverage reports:
   required_.)
   - `PATH=$(go env GOPATH)/bin:${PATH} ./cov_report.sh`
 
-----
+---
 
 ### Linux Distributions
 
@@ -123,7 +123,7 @@ compiled from unmodified source code, using the official toolchain. If you have
 any doubts about your installed Go software, Google provides an automated
 [Go installer for Linux](https://storage.googleapis.com/golang/getgo/installer_linux).
 
-----
+---
 
 ### Documentation
 
@@ -145,7 +145,7 @@ There is also documentation in the
 [docs](https://github.com/johnsonjh/pktd/tree/develop/docs) directory of the
 source tree available for review.
 
-----
+---
 
 ### Community
 
@@ -155,10 +155,10 @@ source tree available for review.
 - Other options are available and listed on the
   [PKT.cash](https://pkt.cash/community/) web site.
 
-----
+---
 
 ### License
 
 `pktd` is licensed under the [Copyfree](http://Copyfree.org) **ISC License**.
 
-----
+---
