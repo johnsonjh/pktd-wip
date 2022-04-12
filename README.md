@@ -1,5 +1,7 @@
 # PKT Cash
 
+# Use https://github.com/pkt-cash/pktd - this is not maintained here.
+
 ---
 
 ## A blockchain utilizing [PacketCrypt](<(https://pkt.cash/PacketCrypt-2020-09-04.pdf)>), a new _bandwidth-hard_ proof-of-work algorithm
